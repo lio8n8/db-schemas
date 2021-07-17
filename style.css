@@ -13,12 +13,23 @@ body {
 header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #252422;
+    color: #FFF;
 }
 
 .title {
     display: flex;
     align-self: center;
+}
+
+.nav-left {
+    padding-left: 1rem;
+}
+
+.nav-right {
+    padding-right: 1rem;
 }
 
 svg {
@@ -32,4 +43,13 @@ svg {
 
 svg .table {
     margin: 10px;
+}
+
+.btn-default {
+    background-color: #EB5E28;
+    width: 5rem;
+    height: 2rem;
+    border: 1px solid #FFF;
+    color: #FFF;
+    font-size: 1rem;
 }
