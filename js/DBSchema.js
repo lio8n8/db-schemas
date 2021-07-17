@@ -40,6 +40,6 @@ export class DBSchema {
     }
 
     render() {
-        data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData).svgEl));
+        data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData).getSvgEl()));
     }
 }
