@@ -12,11 +12,15 @@
         <div class="nav-right">
             <button id=import-btn class="btn-default">Import</button>
             <button id="export-btn" class="btn-default">Export</button>
-            <button id="edit-btn" class="btn-default">Edit</button>
+            <button id="themes-btn" class="btn-default">Themes</button>
         </div>
     </header>
     <main>
-        <svg id="main"> </svg>
+        <div class="schema-editor">
+            <textarea id="schema-editor" class="schema-editor"></textarea>
+        </div>
+        <!-- TODO: Change id.-->
+        <svg id="main" class="schema"> </svg>
     </main>
 
     <script src="index.js" type="module"></script>

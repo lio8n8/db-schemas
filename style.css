@@ -53,3 +53,26 @@ svg .table {
     color: #FFF;
     font-size: 1rem;
 }
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.schema-editor {
+    display: flex;
+    flex: 20%;
+}
+
+.schema-editor {
+    display: flex;
+    width: 100%;
+    background-color: #403D39;
+    color: #FFF;
+}
+
+.schema {
+    display: flex;
+    flex: 80%;
+    background-color: #FFFCF2;
+}
