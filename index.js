@@ -4,5 +4,6 @@ import { Table } from './js/Table.js';
 
 console.log('Application started...');
 const schema = new DBSchema();
-schema.addTable();
-schema.build();
+// schema.addTable();
+// schema.build();
+schema.render();
