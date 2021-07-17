@@ -1,9 +1,10 @@
 import { configs } from './configs.js';
 
-const TABLE_WIDTH = 200;
+const TABLE_WIDTH = 220;
 const MIN_TABLE_HEIGHT = 200;
 const MAX_CELL_WIDTH = 100;
-const ROW_HEIGHT = 20;
+const ROW_HEIGHT = 24;
+const ROW_TEXT_HEIGHT = 24;
 const TABLE_PADDING = 20;
 
 export class TableConfig {
@@ -66,7 +67,35 @@ export class Table {
                 {
                     type: 'String',
                     name: 'password'
-                }
+                },
+                {
+                    type: 'String',
+                    name: 'email'
+                },
+                {
+                    type: 'String',
+                    name: 'firstName'
+                },
+                {
+                    type: 'String',
+                    name: 'lastName'
+                },
+                {
+                    type: 'Date',
+                    name: 'createdAt'
+                },
+                {
+                    type: 'Date',
+                    name: 'updatedAt'
+                },
+                {
+                    type: 'User',
+                    name: 'createdBy'
+                },
+                {
+                    type: 'User',
+                    name: 'updatedBy'
+                },
             ]
         };
 
@@ -95,8 +124,8 @@ export class Table {
         const table = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
         table.setAttribute('x', x);
         table.setAttribute('y', y);
-        table.setAttribute('width', 200)
-        table.setAttribute('height', 200);
+        table.setAttribute('width', TABLE_WIDTH)
+        table.setAttribute('height', this.calculateTableHeight(entityData));
         table.setAttribute('stroke', configs.tableConfig.borderColor);
         table.setAttribute('stroke-width', 4);
         table.setAttribute('fill', configs.tableConfig.backgroundColor);
@@ -154,18 +183,21 @@ export class Table {
             color: '#FFF',
             content: entityData.name
         }));
-        entityData.rows.forEach((row, i) => {
-            let rowBackground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            rowBackground.setAttribute('x', x);
-            rowBackground.setAttribute('y', tableTextY + ROW_HEIGHT * (i + 1));
-            rowBackground.setAttribute('width', 200)
-            rowBackground.setAttribute('height', ROW_HEIGHT);
-            rowBackground.setAttribute('fill', configs.tableConfig.borderColor);
-            g.appendChild(rowBackground);
 
+        for (let i = 0; i < entityData.rows.length; i +=2) {
+            let rowBackground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rowBackground.setAttribute('x', x);
+                rowBackground.setAttribute('y', tableTextY + ROW_HEIGHT * (i + 1) - 14);
+                rowBackground.setAttribute('width', TABLE_WIDTH)
+                rowBackground.setAttribute('height', ROW_HEIGHT);
+                rowBackground.setAttribute('fill', configs.tableConfig.borderColor);
+                g.appendChild(rowBackground);
+        }
+
+        entityData.rows.forEach((row, i) => {
             g.appendChild(this.createTableRow({
                 x: x + TABLE_PADDING,
-                y: tableTextY + ROW_HEIGHT * (i + 1),
+                y: tableTextY + ROW_TEXT_HEIGHT * (i + 1),
                 color: '#FFF',
                 name: row.name,
                 type: row.type
@@ -186,6 +218,7 @@ export class Table {
         text.setAttribute('font-size', '20px');
         text.setAttribute('font-weight', 'bold');
         text.setAttribute('dominant-baseline', 'middle');
+
 
         const tspan0 = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         tspan0.appendChild(document.createTextNode(content));
@@ -217,5 +250,9 @@ export class Table {
         text.appendChild(fieldType);
 
         return text;
+    }
+
+    calculateTableHeight(entityData) {
+        return entityData.rows.length * ROW_HEIGHT + ROW_HEIGHT * 2;
     }
 }
