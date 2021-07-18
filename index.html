@@ -12,8 +12,8 @@
         <div class="nav-right">
             <button id=import-btn class="btn-default">Import</button>
             <button id="export-btn" class="btn-default">Export</button>
-            <button id="themes-btn" class="btn-default">Themes</button>
             <button id="create-project-btn" class="btn-default">Create project</button>
+            <button id="themes-btn" class="btn-default">Themes</button>
         </div>
     </header>
     <main>
@@ -22,7 +22,22 @@
         </div>
         <!-- TODO: Change id.-->
         <svg id="main" class="schema"> </svg>
+        <div id="themes" class="themes">
+            <div>
+                <label for="themes-file">Upload theme</label>
+                <input id="themes-file" name="themes-file" type="file" />
+            </div>
+        </div>
     </main>
+    <div id="window-wrapper" class="window-wrapper">
+        <div id="export-window" class="export-window">
+            <h1>Export window</h1>
+        </div>
+        <div id="import-window" class="import-window">
+            <h1>Import window</h1>
+        </div>
+        <button id="close-window-btn" class="btn-default">Back</button>
+    </div>
 
     <script src="index.js" type="module"></script>
 </body>

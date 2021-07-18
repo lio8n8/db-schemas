@@ -30,18 +30,33 @@ schemaEditorEl.addEventListener('change', event => {
 const importBtnEl = document.getElementById('import-btn');
 const exportBtnEl = document.getElementById('export-btn');
 const themesBtnEl = document.getElementById('themes-btn');
+const windowWrapperEl = document.getElementById('window-wrapper');
+const exportWindowEl = document.getElementById('export-window');
+const importWindowEl = document.getElementById('import-window');
+const closeWindowBtnEl = document.getElementById('close-window-btn');
+const themesEl = document.getElementById('themes');
+
 
 importBtnEl.addEventListener('click', function() {
-    console.log('Import btn -> Not yet implemented!');
+    windowWrapperEl.style.visibility = 'visible';
+    importWindowEl.style.display = 'flex';
 });
 
 exportBtnEl.addEventListener('click', function() {
-    console.log('Export btn -> Not yet implemented!');
+    windowWrapperEl.style.visibility = 'visible';
+    exportWindowEl.style.display = 'flex';
 });
 
 themesBtnEl.addEventListener('click', function() {
-    console.log('Themes btn -> Not yet implemented!');
+    themesEl.style.visibility = themesEl.style.visibility == 'visible' ? 'hidden' : 'visible';
 });
+
+closeWindowBtnEl.addEventListener('click', function() {
+    windowWrapperEl.style.visibility = 'hidden';
+    importWindowEl.style.display = 'none';
+    exportWindowEl.style.display = 'none';
+});
+
 
 function validateData(data) {
     return true;
