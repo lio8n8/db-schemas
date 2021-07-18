@@ -26,10 +26,13 @@ header {
 
 .nav-left {
     padding-left: 1rem;
+    display: flex;
 }
 
 .nav-right {
     padding-right: 1rem;
+    display: flex;
+    flex-direction: row;
 }
 
 svg {
@@ -47,11 +50,15 @@ svg .table {
 
 .btn-default {
     background-color: #EB5E28;
-    width: 5rem;
-    height: 2rem;
+    width: 5.8rem;
+    height: 2.8rem;
     border: 1px solid #FFF;
     color: #FFF;
     font-size: 1rem;
+}
+
+.btn-default:hover {
+    cursor: pointer;
 }
 
 main {
@@ -61,18 +68,32 @@ main {
 
 .schema-editor {
     display: flex;
-    flex: 20%;
+    flex: 25%;
 }
 
-.schema-editor {
+textarea.schema-editor {
     display: flex;
     width: 100%;
-    background-color: #403D39;
+    background-color: #443f38;
     color: #FFF;
+    border: none;
+}
+
+textarea.schema-editor::-webkit-scrollbar{
+    width: 6px;
+}
+
+textarea.schema-editor::-webkit-scrollbar-thumb {
+    background-color: #EB5E28;
+}
+
+.schema-editor:focus {
+    border: none;
+    outline: none;
 }
 
 .schema {
     display: flex;
-    flex: 80%;
+    flex: 75%;
     background-color: #FFFCF2;
 }

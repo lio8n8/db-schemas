@@ -12,7 +12,7 @@ export const configs = {
         borderColor: '#679436',
         backgroundColor: '#A5BE00',
         rx: 10,
-        strokeWidth: 4,
+        strokeWidth: 2,
         header: {
             textAnchor: 'middle',
             fontSize: '20px',
