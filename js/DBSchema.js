@@ -8,7 +8,7 @@ export class DBSchema {
         this.tables = [];
         this.metadata = new DBSchemaMetadata();
 
-        this.svgEl = document.getElementById('main');
+        this.svgEl = document.getElementById('schema');
     }
 
     getData() {

@@ -61,7 +61,7 @@ closeWindowBtnEl.addEventListener('click', function() {
 
 const saveAsSvgBtnEl = document.getElementById('save-as-svg');
 saveAsSvgBtnEl.addEventListener('click', () => {
-    const svgEl = document.getElementById('main');
+    const svgEl = document.getElementById('schema');
     svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     var svgData = svgEl.outerHTML;
     var preface = '<?xml version="1.0" standalone="no"?>';
