@@ -58,6 +58,24 @@ closeWindowBtnEl.addEventListener('click', function() {
 });
 
 
+
+const saveAsSvgBtnEl = document.getElementById('save-as-svg');
+saveAsSvgBtnEl.addEventListener('click', () => {
+    const svgEl = document.getElementById('main');
+    svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    var svgData = svgEl.outerHTML;
+    var preface = '<?xml version="1.0" standalone="no"?>';
+    var svgBlob = new Blob([preface, svgData], {type:"image/svg+xml;charset=utf-8"});
+    var svgUrl = URL.createObjectURL(svgBlob);
+    var downloadLink = document.createElement("a");
+    downloadLink.href = svgUrl;
+    downloadLink.download = 'testtttttttt';
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+});
+
+
 function validateData(data) {
     return true;
 }
