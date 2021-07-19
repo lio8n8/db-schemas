@@ -2,6 +2,7 @@ import { constants } from './js/constants.js';
 import { DBSchema } from './js/DBSchema.js';
 import { Table } from './js/Table.js';
 import { data } from './js/data.js';
+import { defaultThemes } from './js/defaultThemes.js';
 
 console.log('Application started...');
 const schema = new DBSchema(data);
@@ -59,6 +60,7 @@ closeWindowBtnEl.addEventListener('click', function() {
 
 
 
+// TODO: Refactor.
 const saveAsSvgBtnEl = document.getElementById('save-as-svg');
 saveAsSvgBtnEl.addEventListener('click', () => {
     const svgEl = document.getElementById('schema');
@@ -74,6 +76,31 @@ saveAsSvgBtnEl.addEventListener('click', () => {
     downloadLink.click();
     document.body.removeChild(downloadLink);
 });
+
+function renderThemes(container) {
+    /*
+    <div id="themes-list" class="themes-list">
+                <div class="theme">
+                    <span>test0</span>
+                    <div class="theme-colors">
+                        <div class="theme-color"></div>
+                        <div class="theme-color"></div>
+                        <div class="theme-color"></div>
+                        <div class="theme-color"></div>
+                        <div class="theme-color"></div>
+                    </div>
+                </div>
+            </div>
+    */
+    defaultThemes.forEach(theme => {
+        const themeEl = document.createElement('div');
+        themeEl.className = 'theme';
+        const themeNameEl = document.createElement('span');
+        const themeColorsEl = document.createElement('div');
+        themeColorsEl.className = 'theme-colors';
+        
+    });
+}
 
 
 function validateData(data) {

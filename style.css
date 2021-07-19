@@ -133,3 +133,27 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     flex-direction: column;
     align-items: center;
 }
+
+
+.themes-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.theme {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.theme-colors {
+    display: flex;
+    flex-direction: row;
+}
+
+.theme-color {
+    width: 2rem;
+    height: 2rem;
+    background-color: darkgreen;
+    margin: 0 2px;
+}
