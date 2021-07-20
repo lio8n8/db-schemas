@@ -15,10 +15,11 @@ export class TableConfig {
 }
 
 export class Table {
-    constructor(entityData) {
+    constructor(entityData, theme) {
         this.entityData = entityData;
         this.x = entityData.position.x;
         this.y = entityData.position.y;
+        this.theme = theme;
 
         this.svgEl = this.createTable();
     }
@@ -57,9 +58,9 @@ export class Table {
         table.setAttribute('y', this.y);
         table.setAttribute('width', TABLE_WIDTH)
         table.setAttribute('height', this.calculateTableHeight(this.entityData));
-        table.setAttribute('stroke', configs.table.borderColor);
+        table.setAttribute('stroke', this.theme.borderColor);
         table.setAttribute('stroke-width', configs.table.strokeWidth);
-        table.setAttribute('fill', configs.table.backgroundColor);
+        table.setAttribute('fill', this.theme.backgroundColor);
         table.setAttribute('rx', configs.table.rx);
 
         let tableTextY = this.y + TABLE_PADDING;

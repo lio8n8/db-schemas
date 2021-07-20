@@ -138,6 +138,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
 .themes-list {
     display: flex;
     flex-direction: column;
+    margin: 0 10px;
 }
 
 .theme {
@@ -146,9 +147,21 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     align-items: center;
 }
 
+.theme span {
+    display: flex;
+    justify-content: center;
+    width: 60px;
+}
+
+.theme:hover {
+    cursor: pointer;
+}
+
 .theme-colors {
     display: flex;
     flex-direction: row;
+    padding: 4px 0;
+    margin-left: 4px;
 }
 
 .theme-color {

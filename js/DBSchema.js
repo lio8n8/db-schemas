@@ -1,5 +1,6 @@
 import { DBSchemaMetadata } from './DBSchemaMetadata.js';
 import { Table } from './Table.js';
+import { Theme } from './Theme.js';
 // import { data } from './data.js';
 export class DBSchema {
     constructor(data) {
@@ -7,6 +8,7 @@ export class DBSchema {
         this.titles = 'DB Schema'
         this.tables = [];
         this.metadata = new DBSchemaMetadata();
+        this.theme = new Theme();
 
         this.svgEl = document.getElementById('schema');
     }
@@ -20,7 +22,7 @@ export class DBSchema {
     }
 
     addTable() {
-        this.tables.push(new Table());
+        // this.tables.push(new Table());
     }
 
     updateTable(id) {
@@ -32,9 +34,9 @@ export class DBSchema {
     }
 
     build() {
-        this.tables.forEach(table => {
+        /*this.tables.forEach(table => {
             this.svgEl.appendChild(table.svgEl);
-        });
+        });*/
     }
 
     save() {
@@ -42,14 +44,14 @@ export class DBSchema {
     }
 
     loadFromJSFile() {
-        this.tables = [];
+        /*this.tables = [];
         this.data.tables.forEach(t => {
             this.tables.push(new Table(t.name, t.rows));
-        });
+        });*/
     }
 
     render() {
-        this.data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData).getSvgEl()));
+        this.data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData, this.theme.getCurrentTheme()).getSvgEl()));
     }
 
     clear() {
