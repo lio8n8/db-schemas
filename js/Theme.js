@@ -4,12 +4,11 @@ export class Theme {
     constructor() {
         this.themes = defaultThemes;
         this.currentTheme = defaultThemes[0];
+        this.currentThemeEl = null;
         this.themeListContainerEl = document.getElementById('themes-list');
-
-        this.init();
     }
 
-    init() {
+    init(callback) {
 
         defaultThemes.forEach(theme => {
             const themeEl = document.createElement('div');
@@ -27,23 +26,50 @@ export class Theme {
             backgroundColor.style.backgroundColor = theme.backgroundColor;
             themeColorsEl.appendChild(backgroundColor);
 
+            const backgroundColor2 = document.createElement('div');
+            backgroundColor2.className = 'theme-color';
+            backgroundColor2.style.backgroundColor = theme.backgroundColor2;
+            themeColorsEl.appendChild(backgroundColor2);
+
             const borderColor = document.createElement('div');
             borderColor.className = 'theme-color';
             borderColor.style.backgroundColor = theme.borderColor;
             themeColorsEl.appendChild(borderColor);
 
-
             themeEl.appendChild(themeNameEl);
             themeEl.appendChild(themeColorsEl);
             this.themeListContainerEl.appendChild(themeEl);
+
+            themeEl.addEventListener('click', callback);
         });
 
-        let defaultTheme = document.getElementById(defaultThemes[0].name);
-        defaultTheme.classList.add('active');
+        // Set default theme.
+        this.currentThemeEl = document.getElementById(defaultThemes[0].name);
+        this.currentThemeEl.classList.add('active');
+        
     }
+
+    /*changeTheme(el, callback) {
+        this.currentThemeEl.classList.remove('active');
+        
+        el.addEventListener('click', callback);
+        el.classList.add('active');
+    }*/
 
     getCurrentTheme() {
         return this.currentTheme;
+    }
+
+    setCurrentTheme(currentTheme) {
+        this.currentTheme = currentTheme;
+    }
+
+    getCurrentThemeEl() {
+        return this.getCurrentThemeEl;
+    }
+
+    setCurrentThemeEl(currentThemeEl) {
+        this.currentThemeEl = currentThemeEl;
     }
 
     getThemes() {

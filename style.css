@@ -49,7 +49,8 @@ svg .table {
 }
 
 .btn-default {
-    background-color: #EB5E28;
+    /*background-color: #EB5E28; #A5BE00 #26408B; */
+    background-color: #05668D;
     width: 5.8rem;
     height: 2.8rem;
     border: 1px solid #FFF;
@@ -84,11 +85,11 @@ textarea.schema-editor {
 }
 
 textarea.schema-editor::-webkit-scrollbar{
-    width: 6px;
+    width: 8px;
 }
 
 textarea.schema-editor::-webkit-scrollbar-thumb {
-    background-color: #EB5E28;
+    background-color: #313131;
 }
 
 .schema-editor:focus {
@@ -148,7 +149,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
 }
 
 .theme.active {
-    background-color: #000;
+    background-color: #313131;
 }
 
 .theme span {
@@ -159,6 +160,10 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
 
 .theme:hover {
     cursor: pointer;
+}
+
+.theme .theme-colors, .theme span {
+    pointer-events: none;
 }
 
 .theme-colors {

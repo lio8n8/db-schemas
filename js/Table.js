@@ -78,7 +78,7 @@ export class Table {
                 rowBackground.setAttribute('y', tableTextY + ROW_HEIGHT * (i + 1) - 14);
                 rowBackground.setAttribute('width', TABLE_WIDTH)
                 rowBackground.setAttribute('height', ROW_HEIGHT);
-                rowBackground.setAttribute('fill', configs.tableConfig.borderColor);
+                rowBackground.setAttribute('fill', this.theme.backgroundColor2);
                 g.appendChild(rowBackground);
         }
 
@@ -86,7 +86,7 @@ export class Table {
             g.appendChild(this.createTableRow({
                 x: this.x + TABLE_PADDING,
                 y: tableTextY + ROW_TEXT_HEIGHT * (i + 1),
-                color: configs.table.row.color,
+                color: this.theme.color,
                 name: row.name,
                 type: row.type
             }))
