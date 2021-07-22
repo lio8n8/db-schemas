@@ -147,6 +147,10 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     align-items: center;
 }
 
+.theme.active {
+    background-color: #000;
+}
+
 .theme span {
     display: flex;
     justify-content: center;
