@@ -8,7 +8,7 @@ export class DBSchema {
         this.titles = 'DB Schema'
         this.tables = [];
         this.metadata = new DBSchemaMetadata();
-        
+
         this.svgEl = document.getElementById('schema');
 
         this.theme = new Theme();
@@ -22,6 +22,7 @@ export class DBSchema {
             event.target.classList.add('active');
 
             // TODO: Check if theme was changed.
+            this.clear();
             this.render();
         });
     }
@@ -34,18 +35,6 @@ export class DBSchema {
         this.data = data;
     }
 
-    addTable() {
-        // this.tables.push(new Table());
-    }
-
-    updateTable(id) {
-
-    }
-
-    removeTable(id) {
-
-    }
-
     build() {
         /*this.tables.forEach(table => {
             this.svgEl.appendChild(table.svgEl);
@@ -56,14 +45,26 @@ export class DBSchema {
 
     }
 
-    loadFromJSFile() {
-        /*this.tables = [];
-        this.data.tables.forEach(t => {
-            this.tables.push(new Table(t.name, t.rows));
-        });*/
-    }
-
     render() {
+
+        // Set brackground.
+        const backgroundEl = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        backgroundEl.setAttribute('fill', this.theme.getCurrentTheme().backgroundColor3);
+        backgroundEl.setAttribute('width', '100%');
+        backgroundEl.setAttribute('height', '100%');
+        this.svgEl.appendChild(backgroundEl);
+
+        // Add title.
+        const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        title.setAttribute('x', '30%');
+        title.setAttribute('y', 50);
+        title.setAttribute('font-size', '50');
+
+        var textNode = document.createTextNode('Example');
+        title.appendChild(textNode);
+        this.svgEl.appendChild(title);
+
+        // Render tables.
         this.data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData, this.theme.getCurrentTheme()).getSvgEl()));
     }
 
