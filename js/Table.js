@@ -28,24 +28,6 @@ export class Table {
         return this.svgEl;
     }
 
-    addRow(row) {
-        this.rows.push(row);
-    }
-
-    updateRow(row) {
-
-    }
-
-    deleteRow() {
-
-    }
-
-    update() {
-        this.rows.forEach(row => {
-
-        });
-    }
-
     createTable() {
         const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         g.setAttribute('role', 'table');
@@ -61,7 +43,8 @@ export class Table {
         table.setAttribute('stroke', this.theme.borderColor);
         table.setAttribute('stroke-width', configs.table.strokeWidth);
         table.setAttribute('fill', this.theme.backgroundColor);
-        table.setAttribute('rx', configs.table.rx);
+        table.setAttribute('rx', this.theme.tableRx);
+        table.setAttribute('ry', this.theme.tableRy);
 
         let tableTextY = this.y + TABLE_PADDING;
         g.appendChild(table);

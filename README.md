@@ -10,4 +10,4 @@ Implement import/export for schema.
 Add and draw DB relations.   
 Implement import/export for theme.   
 Add validations   
-
+Make it possible to move table from UI. (Corresponding coordinates also should be updated on JSON schema)    

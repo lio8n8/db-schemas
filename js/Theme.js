@@ -36,6 +36,11 @@ export class Theme {
             borderColor.style.backgroundColor = theme.borderColor;
             themeColorsEl.appendChild(borderColor);
 
+            const schemaBackgroundColor = document.createElement('div');
+            schemaBackgroundColor.className = 'theme-color';
+            schemaBackgroundColor.style.backgroundColor = theme.backgroundColor3;
+            themeColorsEl.appendChild(schemaBackgroundColor);
+
             themeEl.appendChild(themeNameEl);
             themeEl.appendChild(themeColorsEl);
             this.themeListContainerEl.appendChild(themeEl);

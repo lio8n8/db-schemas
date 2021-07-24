@@ -82,6 +82,7 @@ textarea.schema-editor {
     background-color: #443f38;
     color: #FFF;
     border: none;
+    margin: 0;
 }
 
 textarea.schema-editor::-webkit-scrollbar{
@@ -160,6 +161,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
 
 .theme:hover {
     cursor: pointer;
+    background-color: #6b6969;
 }
 
 .theme .theme-colors, .theme span {
