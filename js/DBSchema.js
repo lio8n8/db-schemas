@@ -56,13 +56,13 @@ export class DBSchema {
 
         // Add title.
         const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        title.setAttribute('x', '30%');
-        title.setAttribute('y', 50);
+        title.setAttribute('x', this.data.title.x);
+        title.setAttribute('y', this.data.title.y);
         title.setAttribute('font-size', this.theme.getCurrentTheme().schemaFontSize);
         title.setAttribute('font-weight', this.theme.getCurrentTheme().schemaFontWeight);
         title.setAttribute('fill', this.theme.getCurrentTheme().schemaColor);
 
-        var textNode = document.createTextNode('Example');
+        var textNode = document.createTextNode(this.data.title.content);
         title.appendChild(textNode);
         this.svgEl.appendChild(title);
 

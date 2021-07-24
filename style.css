@@ -134,6 +134,8 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     display: none;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    height: 50%;
 }
 
 
@@ -180,4 +182,14 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     height: 2rem;
     background-color: darkgreen;
     margin: 0 2px;
+}
+
+.upload-file-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    background-color: #313030;
+    font-size: 2rem;
 }
