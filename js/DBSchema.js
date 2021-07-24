@@ -58,7 +58,9 @@ export class DBSchema {
         const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         title.setAttribute('x', '30%');
         title.setAttribute('y', 50);
-        title.setAttribute('font-size', '50');
+        title.setAttribute('font-size', this.theme.getCurrentTheme().schemaFontSize);
+        title.setAttribute('font-weight', this.theme.getCurrentTheme().schemaFontWeight);
+        title.setAttribute('fill', this.theme.getCurrentTheme().schemaColor);
 
         var textNode = document.createTextNode('Example');
         title.appendChild(textNode);

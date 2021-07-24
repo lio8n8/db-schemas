@@ -68,16 +68,16 @@ export class Table {
         g.appendChild(this.createTableHeader({
             x: this.x + TABLE_WIDTH / 2,
             y: tableTextY,
-            color: configs.table.header.color,
-            content: this.entityData.name
+            content: this.entityData.name,
+            theme: this.theme
         }));
 
         for (let i = 0; i < this.entityData.rows.length; i += 2) {
             let rowBackground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 rowBackground.setAttribute('x',this. x);
                 rowBackground.setAttribute('y', tableTextY + ROW_HEIGHT * (i + 1) - 14);
-                rowBackground.setAttribute('width', TABLE_WIDTH)
-                rowBackground.setAttribute('height', ROW_HEIGHT);
+                rowBackground.setAttribute('width', this.theme.tableWidth)
+                rowBackground.setAttribute('height', this.theme.rowHeight);
                 rowBackground.setAttribute('fill', this.theme.backgroundColor2);
                 g.appendChild(rowBackground);
         }
@@ -86,7 +86,7 @@ export class Table {
             g.appendChild(this.createTableRow({
                 x: this.x + TABLE_PADDING,
                 y: tableTextY + ROW_TEXT_HEIGHT * (i + 1),
-                color: this.theme.color,
+                theme: this.theme,
                 name: row.name,
                 type: row.type
             }))
@@ -96,15 +96,15 @@ export class Table {
     }
 
     createTableHeader(configsData) {
-        const { x, y, color, content } = configsData;
+        const { x, y, content, theme } = configsData;
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         text.setAttribute('x', x);
         text.setAttribute('y', y);
         text.setAttribute('text-anchor', configs.table.header.textAnchor);
         text.setAttribute('role', 'row');
-        text.setAttribute('fill', color);
-        text.setAttribute('font-size', configs.table.header.fontSize);
-        text.setAttribute('font-weight', configs.table.header.fontWeight);
+        text.setAttribute('fill', theme.titleColor);
+        text.setAttribute('font-size', theme.titleFontSize);
+        text.setAttribute('font-weight', theme.titleFontWeight);
         text.setAttribute('dominant-baseline', 'middle');
 
 
@@ -117,14 +117,15 @@ export class Table {
     }
 
     createTableRow(configsData) {
-        const { x, y, color, name, type } = configsData;
+        const { x, y, theme, name, type } = configsData;
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         text.setAttribute('x', x);
         text.setAttribute('y', y);
         text.setAttribute('text-anchor', configs.table.row.textAnchor);
         text.setAttribute('role', 'row');
-        text.setAttribute('fill', color);
-        text.setAttribute('font-size', configs.table.row.fontSize);
+        text.setAttribute('fill', theme.rowColor);
+        text.setAttribute('font-size', theme.rowFontSize);
+        text.setAttribute('font-weight', theme.rowFontWeight);
         text.setAttribute('dominant-baseline', 'middle');
 
         const fieldName = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
