@@ -53,9 +53,7 @@ themesBtnEl.addEventListener('click', function () {
 });
 
 closeWindowBtnEl.addEventListener('click', function () {
-    windowWrapperEl.style.visibility = 'hidden';
-    importWindowEl.style.display = 'none';
-    exportWindowEl.style.display = 'none';
+    closeWindow();
 });
 
 
@@ -81,7 +79,7 @@ const saveAsJSONBtnEl = document.getElementById('save-as-json');
 saveAsJSONBtnEl.addEventListener('click', () => {
     // TODO: Validate.
     var data = schemaEditorEl.value;
-    var json = JSON.stringify(JSON.parse(data));
+    var json = JSON.stringify(schema.getData());
     var blob = new Blob([json], { type: "application/json" });
     var url = URL.createObjectURL(blob);
 
@@ -98,13 +96,28 @@ saveAsJSONBtnEl.addEventListener('click', () => {
 
 const uploadFileInputEl = document.getElementById('upload-file');
 uploadFileInputEl.addEventListener('change', event => {
-    console.log(event.target.files[0]);
     const reader = new FileReader()
-    // reader.onload = handleFileLoad;
+    reader.onload = function (e) {
+        // TODO: Validate.
+        const data = JSON.parse(e.target.result);
+        schema.setData(data);
+        schema.clear();
+        schema.render();
+
+        schemaEditorEl.value = JSON.stringify(data, null, 2);
+
+        closeWindow();
+    }
     reader.readAsText(event.target.files[0])
 });
 
 
 function validateData(data) {
     return true;
+}
+
+function closeWindow() {
+    windowWrapperEl.style.visibility = 'hidden';
+    importWindowEl.style.display = 'none';
+    exportWindowEl.style.display = 'none';
 }

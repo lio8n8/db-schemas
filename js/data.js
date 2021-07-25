@@ -1,7 +1,9 @@
 export const data = {
     title: {
-        x: '30%',
-        y: '50',
+        position: {
+            x: '30%',
+            y: '50'
+        },
         content: 'Example'
     },
     entityData: [{
