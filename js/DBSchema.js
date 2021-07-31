@@ -6,10 +6,6 @@ export class DBSchema {
     constructor(data) {
         this.data = data;
         this.titles = 'DB Schema'
-        this.tables = [];
-        this.metadata = new DBSchemaMetadata();
-
-        this.svgEl = document.getElementById('schema');
 
         this.theme = new Theme();
         this.theme.init(event => {
@@ -25,6 +21,11 @@ export class DBSchema {
             this.clear();
             this.render();
         });
+
+        this.tables = [];
+        this.metadata = new DBSchemaMetadata();
+
+        this.svgEl = document.getElementById('schema');
     }
 
     getData() {
@@ -67,7 +68,24 @@ export class DBSchema {
         this.svgEl.appendChild(title);
 
         // Render tables.
-        this.data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData, this.theme.getCurrentTheme()).getSvgEl()));
+        this.createTables();
+        this.tables.forEach(t => this.svgEl.appendChild(t.getSvgEl()));
+        //this.data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData, this.theme.getCurrentTheme()).getSvgEl()));
+    }
+
+    createTables() {
+        this.tables = [];
+        this.data.entityData.forEach(entitData => this.tables.push(new Table(entitData, this.theme.getCurrentTheme())));
+    }
+
+    findByByTableId(id) {
+        return this.tables.find(t => t.id == id);
+    }
+
+    updateTableCoordinates(tableId, x, y) {
+        let tableData = this.data.entityData.find(t => t.name == tableId);
+        tableData.position.x = x;
+        tableData.position.y = y;
     }
 
     clear() {

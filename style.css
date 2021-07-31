@@ -193,3 +193,13 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     background-color: #313030;
     font-size: 2rem;
 }
+
+
+/*g {
+    pointer-events: bounding-box;
+    opacity: 0.5;
+  }
+  g:hover {
+      opacity: 1;
+  }
+  */

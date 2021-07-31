@@ -121,3 +121,51 @@ function closeWindow() {
     importWindowEl.style.display = 'none';
     exportWindowEl.style.display = 'none';
 }
+
+
+const schemaEl = document.getElementById('schema');
+schemaEl.addEventListener('load', makeDraggable);
+function makeDraggable(evt) {
+    let rect = document.getElementById('test');
+    let selectedEl = null;
+    let selectedElId = null;
+    let X = null;
+    let Y = null;
+    let svg = evt.target;
+
+    schemaEl.addEventListener('mousemove', event => {
+        if (selectedEl) {
+            event.preventDefault();
+            event.stopPropagation();
+            let CTM = svg.getScreenCTM();
+
+            let x = (event.clientX - CTM.e) / CTM.a;
+            let y = (event.clientY - CTM.f) / CTM.d;
+
+            schema.findByByTableId(selectedElId).move(x, y);
+            schema.updateTableCoordinates(selectedElId, x, y);
+        }
+
+        X = event.clientX;
+        Y = event.clientY;
+    });
+
+    schemaEl.addEventListener('mousedown', event => {
+        selectedEl = event.target;
+        selectedElId = event.target.id.split('-')[0];
+        X = event.clientX;
+        Y = event.clientY;
+    });
+
+    schemaEl.addEventListener('mouseup', event => {
+        selectedEl = null;
+        X = null;
+        Y = null;
+    });
+
+    schemaEl.addEventListener('mouseleave', event => {
+        selectedEl = null;
+        X = null;
+        Y = null;
+    });
+}
