@@ -1,4 +1,4 @@
-import { defaultThemes } from './defaultThemes.js';
+import { defaultThemes } from './data/defaultThemes.js';
 
 export class Theme {
     constructor() {

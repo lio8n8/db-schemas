@@ -1,5 +1,8 @@
-# db-schemas
+# DB Schemas
 DB Schemas
+
+## Getting starting
+TODO: Add
 
 ### TODO:   
 Add DB title   

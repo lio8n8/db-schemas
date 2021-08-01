@@ -1,17 +1,6 @@
-import { configs } from './configs.js';
-
-const TABLE_WIDTH = 220;
-const MIN_TABLE_HEIGHT = 200;
 const MAX_CELL_WIDTH = 100;
 const ROW_HEIGHT = 24;
-const ROW_TEXT_HEIGHT = 24;
 const TABLE_PADDING = 20;
-
-export class TableConfig {
-    constructor(position) {
-        this.position = position;
-    }
-}
 
 export class Table {
     constructor(entityData, theme) {
@@ -48,10 +37,10 @@ export class Table {
         table.id = `${this.entityData.name}-table`;
         table.setAttribute('x', this.x);
         table.setAttribute('y', this.y);
-        table.setAttribute('width', TABLE_WIDTH)
+        table.setAttribute('width', this.theme.tableWidth)
         table.setAttribute('height', this.calculateTableHeight(this.entityData));
         table.setAttribute('stroke', this.theme.borderColor);
-        table.setAttribute('stroke-width', configs.table.strokeWidth);
+        table.setAttribute('stroke-width', this.theme.tableStrokeWidth);
         table.setAttribute('fill', this.theme.backgroundColor);
         table.setAttribute('rx', this.theme.tableRx);
         table.setAttribute('ry', this.theme.tableRy);
@@ -60,7 +49,7 @@ export class Table {
         g.appendChild(table);
 
         let header = this.createTableHeader({
-            x: this.x + TABLE_WIDTH / 2,
+            x: this.x + this.theme.tableWidth / 2,
             y: tableTextY,
             content: this.entityData.name,
             theme: this.theme
@@ -83,7 +72,7 @@ export class Table {
         this.entityData.rows.forEach((row, i) => {
             let rowText = this.createTableRow({
                 x: this.x + TABLE_PADDING,
-                y: tableTextY + ROW_TEXT_HEIGHT * (i + 1),
+                y: tableTextY + this.theme.rowHeight * (i + 1),
                 theme: this.theme,
                 name: row.name,
                 type: row.type
@@ -105,7 +94,7 @@ export class Table {
         text.id = `${this.entityData.name}-title`;
         text.setAttribute('x', x);
         text.setAttribute('y', y);
-        text.setAttribute('text-anchor', configs.table.header.textAnchor);
+        text.setAttribute('text-anchor', theme.headerTextAnchor);
         text.setAttribute('role', 'row');
         text.setAttribute('fill', theme.titleColor);
         text.setAttribute('font-size', theme.titleFontSize);
@@ -126,7 +115,7 @@ export class Table {
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         text.setAttribute('x', x);
         text.setAttribute('y', y);
-        text.setAttribute('text-anchor', configs.table.row.textAnchor);
+        text.setAttribute('text-anchor', theme.rowTextAnchor);
         text.setAttribute('role', 'row');
         text.setAttribute('fill', theme.rowColor);
         text.setAttribute('font-size', theme.rowFontSize);
@@ -150,14 +139,13 @@ export class Table {
         return entityData.rows.length * ROW_HEIGHT + ROW_HEIGHT * 2;
     }
 
-    // TODO: Fix coordinates for all elements.
     move(x, y) {
         let tableTextY = y + TABLE_PADDING;
 
         this.tableEl.table.setAttribute('x', x);
         this.tableEl.table.setAttribute('y', y);
 
-        this.tableEl.header.setAttribute('x', x + TABLE_WIDTH / 2);
+        this.tableEl.header.setAttribute('x', x + this.theme.tableWidth / 2);
         this.tableEl.header.setAttribute('y', tableTextY);
 
         let counter = 0;
@@ -170,7 +158,10 @@ export class Table {
 
         this.tableEl.rowTexts.forEach((r, i) => {
             r.setAttribute('x', x + TABLE_PADDING);
-            r.setAttribute('y', tableTextY + ROW_TEXT_HEIGHT * (i + 1));
+            r.setAttribute('y', tableTextY + this.theme.rowHeight * (i + 1));
+
+            // Update position for field type.
+            r.children[1].setAttribute('x', x + MAX_CELL_WIDTH + TABLE_PADDING);
         });
     }
 }

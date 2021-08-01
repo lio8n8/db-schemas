@@ -91,5 +91,50 @@ export const data = {
                 name: 'updatedBy'
             },
         ]
+    },
+    {
+        name: 'Order',
+        position: {
+            x: 340,
+            y: 380
+        },
+        rows: [
+            {
+                type: 'String',
+                name: 'id'
+            },
+            {
+                type: 'User',
+                name: 'user'
+            },
+            {
+                type: 'Array',
+                name: 'productItems'
+            },
+            {
+                type: 'Enum',
+                name: 'status'
+            },
+            {
+                type: 'Address',
+                name: 'address'
+            },
+            {
+                type: 'Date',
+                name: 'createdAt'
+            },
+            {
+                type: 'Date',
+                name: 'updatedAt'
+            },
+            {
+                type: 'User',
+                name: 'createdBy'
+            },
+            {
+                type: 'User',
+                name: 'updatedBy'
+            },
+        ]
     }]
 };

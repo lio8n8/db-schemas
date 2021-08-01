@@ -1,13 +1,9 @@
-import { constants } from './js/constants.js';
 import { DBSchema } from './js/DBSchema.js';
-import { Table } from './js/Table.js';
-import { data } from './js/data.js';
-import { defaultThemes } from './js/defaultThemes.js';
+import { data } from './js/data/example.js';
 
 console.log('Application started...');
 const schema = new DBSchema(data);
-// schema.addTable();
-// schema.build();
+
 schema.render();
 
 const schemaEditorEl = document.getElementById('schema-editor');
@@ -22,11 +18,6 @@ schemaEditorEl.addEventListener('change', event => {
     schema.clear();
     schema.render();
 });
-
-
-
-
-
 
 const importBtnEl = document.getElementById('import-btn');
 const exportBtnEl = document.getElementById('export-btn');
@@ -126,11 +117,8 @@ function closeWindow() {
 const schemaEl = document.getElementById('schema');
 schemaEl.addEventListener('load', makeDraggable);
 function makeDraggable(evt) {
-    let rect = document.getElementById('test');
     let selectedEl = null;
     let selectedElId = null;
-    let X = null;
-    let Y = null;
     let svg = evt.target;
 
     schemaEl.addEventListener('mousemove', event => {
@@ -145,27 +133,18 @@ function makeDraggable(evt) {
             schema.findByByTableId(selectedElId).move(x, y);
             schema.updateTableCoordinates(selectedElId, x, y);
         }
-
-        X = event.clientX;
-        Y = event.clientY;
     });
 
     schemaEl.addEventListener('mousedown', event => {
         selectedEl = event.target;
         selectedElId = event.target.id.split('-')[0];
-        X = event.clientX;
-        Y = event.clientY;
     });
 
     schemaEl.addEventListener('mouseup', event => {
         selectedEl = null;
-        X = null;
-        Y = null;
     });
 
     schemaEl.addEventListener('mouseleave', event => {
         selectedEl = null;
-        X = null;
-        Y = null;
     });
 }

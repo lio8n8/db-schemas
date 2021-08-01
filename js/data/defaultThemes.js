@@ -19,7 +19,10 @@ export const defaultThemes = [
         rowColor: '#FFF',
         schemaFontSize: '50px',
         schemaFontWeight: '500',
-        schemaColor: '#000'
+        schemaColor: '#000',
+        tableStrokeWidth: 1,
+        headerTextAnchor: 'middle',
+        rowTextAnchor: 'start'
     },
     {
         name: 'test1',
@@ -41,7 +44,10 @@ export const defaultThemes = [
         rowColor: '#FFF',
         schemaFontSize: '50px',
         schemaFontWeight: '500',
-        schemaColor: '#000'
+        schemaColor: '#000',
+        tableStrokeWidth: 2,
+        headerTextAnchor: 'middle',
+        rowTextAnchor: 'start'
     },
     {
         name: 'test2',
@@ -63,7 +69,10 @@ export const defaultThemes = [
         rowColor: '#000',
         schemaFontSize: '50px',
         schemaFontWeight: '500',
-        schemaColor: '#000'
+        schemaColor: '#000',
+        tableStrokeWidth: 1,
+        headerTextAnchor: 'middle',
+        rowTextAnchor: 'start'
     },
     {
         name: 'test3',
@@ -85,6 +94,9 @@ export const defaultThemes = [
         rowColor: '#FFF',
         schemaFontSize: '50px',
         schemaFontWeight: '500',
-        schemaColor: '#FFF'
+        schemaColor: '#FFF',
+        tableStrokeWidth: 2,
+        headerTextAnchor: 'middle',
+        rowTextAnchor: 'start'
     }
 ];
