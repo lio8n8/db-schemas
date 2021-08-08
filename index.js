@@ -130,6 +130,13 @@ function makeDraggable(evt) {
             let x = (event.clientX - CTM.e) / CTM.a;
             let y = (event.clientY - CTM.f) / CTM.d;
 
+            if ('dbschematitle' == selectedElId) {
+                selectedEl.setAttribute('x', x);
+                selectedEl.setAttribute('y', y);
+
+                return;
+            }
+
             schema.findByByTableId(selectedElId).move(x, y);
             schema.updateTableCoordinates(selectedElId, x, y);
         }

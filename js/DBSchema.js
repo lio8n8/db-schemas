@@ -57,6 +57,8 @@ export class DBSchema {
 
         // Add title.
         const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        title.id = 'dbschematitle';
+        title.classList.add('dbschematitle');
         title.setAttribute('x', this.data.title.position.x);
         title.setAttribute('y', this.data.title.position.y);
         title.setAttribute('font-size', this.theme.getCurrentTheme().schemaFontSize);

@@ -113,6 +113,7 @@ export class Table {
     createTableRow(configsData) {
         const { x, y, theme, name, type } = configsData;
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.id = `${this.entityData.name}-property`;
         text.setAttribute('x', x);
         text.setAttribute('y', y);
         text.setAttribute('text-anchor', theme.rowTextAnchor);
@@ -124,8 +125,10 @@ export class Table {
 
         const fieldName = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         fieldName.appendChild(document.createTextNode(name));
+        fieldName.id = `${this.entityData.name}-propertyname`;
 
         const fieldType = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        fieldType.id = `${this.entityData.name}-propertytype`;
         fieldType.appendChild(document.createTextNode(type));
         fieldType.setAttribute('x', x + MAX_CELL_WIDTH)
 

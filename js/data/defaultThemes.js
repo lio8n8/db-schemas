@@ -76,10 +76,10 @@ export const defaultThemes = [
     },
     {
         name: 'test3',
-        backgroundColor: '#bfd200',
-        backgroundColor2: '#55a630',
-        backgroundColor3: '#000',
-        borderColor: '#55a630',
+        backgroundColor: '#a4ac86',
+        backgroundColor2: '#606c38',
+        backgroundColor3: '#fefae0',
+        borderColor: '#606c38',
         color: '#FFF',
         color2: '#FFF',
         tableRx: 0,
@@ -94,7 +94,7 @@ export const defaultThemes = [
         rowColor: '#FFF',
         schemaFontSize: '50px',
         schemaFontWeight: '500',
-        schemaColor: '#FFF',
+        schemaColor: '#606c38',
         tableStrokeWidth: 2,
         headerTextAnchor: 'middle',
         rowTextAnchor: 'start'

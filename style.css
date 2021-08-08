@@ -194,12 +194,6 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     font-size: 2rem;
 }
 
-
-/*g {
-    pointer-events: bounding-box;
-    opacity: 0.5;
-  }
-  g:hover {
-      opacity: 1;
-  }
-  */
+g.move, .dbschematitle, g:hover {
+    cursor: move;
+}
