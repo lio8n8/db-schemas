@@ -35,6 +35,7 @@ export class Table {
 
         const table = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
         table.id = `${this.entityData.name}-table`;
+        table.setAttribute('moveable', true);
         table.setAttribute('x', this.x);
         table.setAttribute('y', this.y);
         table.setAttribute('width', this.theme.tableWidth)
@@ -59,6 +60,7 @@ export class Table {
         for (let i = 0; i < this.entityData.rows.length; i += 2) {
             let rowBackground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
             rowBackground.id = `${this.entityData.name}-row`;
+            rowBackground.setAttribute('moveable', true);
             rowBackground.setAttribute('x', this.x);
             rowBackground.setAttribute('y', tableTextY + ROW_HEIGHT * (i + 1) - 14);
             rowBackground.setAttribute('width', this.theme.tableWidth)
@@ -100,12 +102,14 @@ export class Table {
         text.setAttribute('font-size', theme.titleFontSize);
         text.setAttribute('font-weight', theme.titleFontWeight);
         text.setAttribute('dominant-baseline', 'middle');
+        text.setAttribute('moveable', true);
 
 
-        const tspan0 = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
-        tspan0.appendChild(document.createTextNode(content));
+        const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        tspan.appendChild(document.createTextNode(content));
+        tspan.setAttribute('moveable', true);
 
-        text.appendChild(tspan0);
+        text.appendChild(tspan);
 
         return text;
     }
@@ -122,15 +126,18 @@ export class Table {
         text.setAttribute('font-size', theme.rowFontSize);
         text.setAttribute('font-weight', theme.rowFontWeight);
         text.setAttribute('dominant-baseline', 'middle');
+        text.setAttribute('moveable', true);
 
         const fieldName = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         fieldName.appendChild(document.createTextNode(name));
         fieldName.id = `${this.entityData.name}-propertyname`;
+        fieldName.setAttribute('moveable', true);
 
         const fieldType = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         fieldType.id = `${this.entityData.name}-propertytype`;
         fieldType.appendChild(document.createTextNode(type));
         fieldType.setAttribute('x', x + MAX_CELL_WIDTH)
+        fieldType.setAttribute('moveable', true);
 
         text.appendChild(fieldName);
         text.appendChild(fieldType);

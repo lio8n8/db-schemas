@@ -114,37 +114,43 @@ function closeWindow() {
 }
 
 
+let offsetX = 0;
+let offsetY = 0;
 const schemaEl = document.getElementById('schema');
 schemaEl.addEventListener('load', makeDraggable);
 function makeDraggable(evt) {
     let selectedEl = null;
     let selectedElId = null;
     let svg = evt.target;
+    let CTM = svg.getScreenCTM();
 
     schemaEl.addEventListener('mousemove', event => {
-        if (selectedEl) {
+        if (selectedEl && selectedEl.getAttribute('moveable')) {
             event.preventDefault();
             event.stopPropagation();
-            let CTM = svg.getScreenCTM();
+
 
             let x = (event.clientX - CTM.e) / CTM.a;
             let y = (event.clientY - CTM.f) / CTM.d;
 
             if ('dbschematitle' == selectedElId) {
-                selectedEl.setAttribute('x', x);
-                selectedEl.setAttribute('y', y);
+                selectedEl.setAttributeNS(null, 'x', x - offsetX);
+                selectedEl.setAttributeNS(null, 'y', y - offsetY);
 
                 return;
             }
 
-            schema.findByByTableId(selectedElId).move(x, y);
-            schema.updateTableCoordinates(selectedElId, x, y);
+            schema.findByByTableId(selectedElId).move(x - offsetX, y - offsetY);
+            schema.updateTableCoordinates(selectedElId, x - offsetX, y - offsetY);
         }
     });
 
     schemaEl.addEventListener('mousedown', event => {
         selectedEl = event.target;
         selectedElId = event.target.id.split('-')[0];
+
+        offsetX = ((event.clientX - CTM.e) / CTM.a) - selectedEl.getAttributeNS(null, 'x');
+        offsetY = ((event.clientY - CTM.f) / CTM.d) - selectedEl.getAttributeNS(null, 'y');
     });
 
     schemaEl.addEventListener('mouseup', event => {
