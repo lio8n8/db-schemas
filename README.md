@@ -1,5 +1,6 @@
 # DB Schemas
-DB Schemas
+DB Schemas   
+[Go to application](https://lio8n8.github.io/db-schemas/)
 
 ## Getting starting
 TODO: Add
