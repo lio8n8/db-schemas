@@ -133,15 +133,12 @@ function makeDraggable(evt) {
             let x = (event.clientX - CTM.e) / CTM.a;
             let y = (event.clientY - CTM.f) / CTM.d;
 
-            // let id = event.target.id.split('-')[0];
-            // let gEl = document.getElementById(`${id}-g`);
+            let xDiff = x - offsetX;
+            let yDiff = y - offsetY;
 
-            schema.findByByTableId(selectedElId).move(x - offsetX, y - offsetY);
-            schema.updateTableCoordinates(selectedElId, x - offsetX, y - offsetY);
-
-            // if (gEl) {
-            // gEl.setAttribute('transform', `translate(${x - offsetX}, ${y - offsetY})`);
-            // }
+            schema.findByByTableId(selectedElId).move(xDiff, yDiff);
+            schema.updateTableCoordinates(selectedElId, xDiff, yDiff);
+            schemaEditorEl.value = JSON.stringify(schema.getData(), null, 2);
         }
     });
 
