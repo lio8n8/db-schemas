@@ -116,6 +116,19 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     visibility: visible;
 }
 
+.themes-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 15px;
+}
+
+.themes-actions-btn {
+    width: 4rem;
+    height: 2rem;
+    margin: 0 5px;
+    background-color: #426903;
+}
 
 .window-wrapper {
     display: flex;
