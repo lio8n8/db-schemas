@@ -87,6 +87,20 @@ export class Table {
         this.tableEl.header = header;
         this.tableEl.table = table;
 
+        // Used to move table.
+        const transparentTable = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        transparentTable.id = `${this.entityData.name}-table1`;
+        transparentTable.setAttribute('moveable', true);
+        transparentTable.setAttribute('x', this.x);
+        transparentTable.setAttribute('y', this.y);
+        transparentTable.setAttribute('width', this.theme.tableWidth)
+        transparentTable.setAttribute('height', this.calculateTableHeight(this.entityData));
+        transparentTable.setAttribute('stroke-width', this.theme.tableStrokeWidth);
+        transparentTable.setAttribute('fill', this.theme.backgroundColor);
+        transparentTable.setAttribute('style', 'opacity: 0')
+
+        g.appendChild(transparentTable);
+
         return g;
     }
 
@@ -149,6 +163,7 @@ export class Table {
         return entityData.rows.length * ROW_HEIGHT + ROW_HEIGHT * 2;
     }
 
+    // TODO: Refactor.
     move(x, y) {
         let tableTextY = y + TABLE_PADDING;
 

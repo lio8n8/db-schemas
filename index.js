@@ -133,15 +133,15 @@ function makeDraggable(evt) {
             let x = (event.clientX - CTM.e) / CTM.a;
             let y = (event.clientY - CTM.f) / CTM.d;
 
-            if ('dbschematitle' == selectedElId) {
-                selectedEl.setAttributeNS(null, 'x', x - offsetX);
-                selectedEl.setAttributeNS(null, 'y', y - offsetY);
-
-                return;
-            }
+            // let id = event.target.id.split('-')[0];
+            // let gEl = document.getElementById(`${id}-g`);
 
             schema.findByByTableId(selectedElId).move(x - offsetX, y - offsetY);
             schema.updateTableCoordinates(selectedElId, x - offsetX, y - offsetY);
+
+            // if (gEl) {
+            // gEl.setAttribute('transform', `translate(${x - offsetX}, ${y - offsetY})`);
+            // }
         }
     });
 
@@ -149,15 +149,19 @@ function makeDraggable(evt) {
         selectedEl = event.target;
         selectedElId = event.target.id.split('-')[0];
 
-        offsetX = ((event.clientX - CTM.e) / CTM.a) - selectedEl.getAttributeNS(null, 'x');
-        offsetY = ((event.clientY - CTM.f) / CTM.d) - selectedEl.getAttributeNS(null, 'y');
+        offsetX = ((event.clientX - CTM.e) / CTM.a) - selectedEl.getAttribute('x');
+        offsetY = ((event.clientY - CTM.f) / CTM.d) - selectedEl.getAttribute('y');
     });
 
     schemaEl.addEventListener('mouseup', event => {
         selectedEl = null;
+        offsetX = 0;
+        offsetY = 0
     });
 
     schemaEl.addEventListener('mouseleave', event => {
         selectedEl = null;
+        offsetX = 0;
+        offsetY = 0
     });
 }

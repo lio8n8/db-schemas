@@ -64,7 +64,7 @@ export class DBSchema {
         title.setAttribute('font-size', this.theme.getCurrentTheme().schemaFontSize);
         title.setAttribute('font-weight', this.theme.getCurrentTheme().schemaFontWeight);
         title.setAttribute('fill', this.theme.getCurrentTheme().schemaColor);
-        title.setAttribute('moveable', true);
+        // title.setAttribute('moveable', true);
 
         var textNode = document.createTextNode(this.data.title.content);
         title.appendChild(textNode);
