@@ -113,7 +113,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     height: 100%;
     background-color: #443f38;
     color: #FFF;
-    visibility: hidden;
+    visibility: visible;
 }
 
 
