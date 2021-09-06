@@ -109,7 +109,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     flex-direction: column;
     position: absolute;
     right: 0;
-    width: 16rem;
+    width: 18rem;
     height: 100%;
     background-color: #443f38;
     color: #FFF;
@@ -177,6 +177,11 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
 .theme:hover {
     cursor: pointer;
     background-color: #6b6969;
+}
+
+.theme-view {
+    display: flex;
+    align-items: center;
 }
 
 .theme .theme-colors, .theme span {

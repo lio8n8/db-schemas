@@ -20,6 +20,11 @@ export class Theme {
             const themeEl = document.createElement('div');
             themeEl.className = 'theme';
             themeEl.id = theme.name;
+
+            const themeViewEl = document.createElement('div');
+            themeViewEl.id = theme.name;
+            themeViewEl.className = 'theme-view';
+
             const themeNameEl = document.createElement('span');
             themeNameEl.textContent = theme.name;
 
@@ -50,18 +55,24 @@ export class Theme {
             const deleteIcon = document.createElement('img');
             deleteIcon.className = 'theme-delete-icon'
             deleteIcon.setAttribute('src', 'src/images/delete.svg');
+            deleteIcon.id = theme.name;
 
             const editIcon = document.createElement('img');
             editIcon.className = 'theme-edit-icon'
             editIcon.setAttribute('src', 'src/images/edit.svg');
+            editIcon.id = theme.name;
 
-            themeEl.appendChild(themeNameEl);
-            themeEl.appendChild(themeColorsEl);
+            themeViewEl.appendChild(themeNameEl);
+            themeViewEl.appendChild(themeColorsEl);
+
+            themeEl.appendChild(themeViewEl);
             themeEl.appendChild(editIcon);
             themeEl.appendChild(deleteIcon);
             this.themeListContainerEl.appendChild(themeEl);
 
-            themeEl.addEventListener('click', callback);
+            themeViewEl.addEventListener('click', callback);
+            deleteIcon.addEventListener('click', () => console.info('Not yet implemented!'));
+            editIcon.addEventListener('click', () => console.info('Not yet implemented!'));
         });
 
         // Set default theme.
