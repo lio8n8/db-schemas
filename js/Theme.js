@@ -6,6 +6,12 @@ export class Theme {
         this.currentTheme = defaultThemes[0];
         this.currentThemeEl = null;
         this.themeListContainerEl = document.getElementById('themes-list');
+
+        this.actionbuttons = {
+            create: document.getElementById('create-theme-btn'),
+            import: document.getElementById('import-themes-btn'),
+            export: document.getElementById('export-theme-btn')
+        };
     }
 
     init(callback) {
@@ -41,8 +47,18 @@ export class Theme {
             schemaBackgroundColor.style.backgroundColor = theme.backgroundColor3;
             themeColorsEl.appendChild(schemaBackgroundColor);
 
+            const deleteIcon = document.createElement('img');
+            deleteIcon.className = 'theme-delete-icon'
+            deleteIcon.setAttribute('src', 'src/images/delete.svg');
+
+            const editIcon = document.createElement('img');
+            editIcon.className = 'theme-edit-icon'
+            editIcon.setAttribute('src', 'src/images/edit.svg');
+
             themeEl.appendChild(themeNameEl);
             themeEl.appendChild(themeColorsEl);
+            themeEl.appendChild(editIcon);
+            themeEl.appendChild(deleteIcon);
             this.themeListContainerEl.appendChild(themeEl);
 
             themeEl.addEventListener('click', callback);

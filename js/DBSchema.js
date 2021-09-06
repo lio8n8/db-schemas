@@ -36,6 +36,10 @@ export class DBSchema {
         this.data = data;
     }
 
+    getTheme() {
+        return this.theme;
+    }
+
     build() {
         /*this.tables.forEach(table => {
             this.svgEl.appendChild(table.svgEl);
@@ -78,7 +82,7 @@ export class DBSchema {
 
     createTables() {
         this.tables = [];
-        this.data.entityData.forEach(entitData => this.tables.push(new Table(entitData, this.theme.getCurrentTheme())));
+        this.data.entityData.forEach(entityData => this.tables.push(new Table(entityData, this.theme.getCurrentTheme())));
     }
 
     findByByTableId(id) {

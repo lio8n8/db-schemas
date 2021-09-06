@@ -35,7 +35,7 @@ header {
     flex-direction: row;
 }
 
-svg {
+svg.schema {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -113,7 +113,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     height: 100%;
     background-color: #443f38;
     color: #FFF;
-    visibility: visible;
+    /*visibility: visible;*/
 }
 
 .themes-actions {
@@ -143,7 +143,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     visibility: hidden;
 }
 
-.export-window, .import-window {
+.model-window {
     display: none;
     flex-direction: column;
     align-items: center;
@@ -191,10 +191,22 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
 }
 
 .theme-color {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     background-color: darkgreen;
     margin: 0 2px;
+}
+
+.theme-edit-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+}
+
+.theme-delete-icon {
+    width: 18px;
+    height: 18px;
+    margin: 0 5px;
 }
 
 .upload-file-container {
@@ -209,4 +221,36 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
 
 g.move, .dbschematitle, g:hover {
     cursor: move;
+}
+
+.inner-modal-window {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    height: 80%;
+    background-color: #313030;
+    color: #FFF;
+}
+
+.row {
+    margin: 5px 2rem;
+}
+
+.save-theme-btn {
+    width: 5rem;
+    height: 2.4rem;
+    align-self: flex-end;
+}
+
+.create-theme-form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.theme-view {
+    display: flex;
+    height: 100%;
 }

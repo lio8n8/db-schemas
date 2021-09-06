@@ -28,26 +28,57 @@
                 <input id="themes-file" name="themes-file" type="file" />
             </div> -->
             <div id="themes-actions" class="themes-actions">
-                <button class="btn-default themes-actions-btn">Add</button>
-                <button class="btn-default themes-actions-btn">Import</button>
-                <button class="btn-default themes-actions-btn">Export</button>
+                <button id="create-theme-btn" class="btn-default themes-actions-btn">Create</button>
+                <button id="import-themes-btn" class="btn-default themes-actions-btn">Import</button>
+                <button id="export-themes-btn" class="btn-default themes-actions-btn">Export</button>
             </div>
             <div id="themes-list" class="themes-list">
             </div>
         </div>
     </main>
     <div id="window-wrapper" class="window-wrapper">
-        <div id="export-window" class="export-window">
-            <h1>Export window</h1>
+        <div id="export-window" class="model-window export-window">
+            <h1>Export schema</h1>
             <button id="save-as-json" class="btn-default">Save JSON schema</button>
             <button id="save-as-svg" class="btn-default">Save as SVG</button>
             <button id="save-as-jpeg" class="btn-default">Save as JPEG</button>
             <button id="save-as-pdf" class="btn-default">Save as PDF</button>
         </div>
-        <div id="import-window" class="import-window">
-            <h1>Import window</h1>
+        <div id="import-window" class="model-window import-window">
+            <h1>Import schema</h1>
             <input id="upload-file" type="file" accept=".json" hidden />
             <label for="upload-file" class="upload-file-container">Choose file</label>
+        </div>
+        <div id="create-theme-window" class="model-window create-theme-window">
+            <h1>Create theme</h1>
+            <div class="inner-modal-window">
+                <form class="create-theme-form">
+                    <div class="row">
+                        <label>Color 1</label>
+                        <input type="color" />
+                    </div>
+                    <div class="row">
+                        <label>Color 2</label>
+                        <input type="color" />
+                    </div>
+                    <div class="row">
+                        <label for="theme-name">Theme name: </label>
+                        <input id="theme-name" type="text"/>
+                    </div>
+                    <div class="row">
+                        <button id="save-theme-btn" class="btn-default save-theme-btn">Save</button>
+                    </div>
+                </form>
+                <svg id="theme-view" class="theme-view" xmlns="http://www.w3.org/2000/svg"></svg>
+            </div>
+        </div>
+        <div id="import-themes-window" class="model-window import-themes-window">
+            <h1>Import themes</h1>
+            <input id="upload-themes-file" type="file" accept=".json" hidden />
+            <label for="upload-file" class="upload-file-container">Choose file</label>
+        </div>
+        <div id="export-themes-window" class="model-window create-theme-window">
+            <h1>Export themes</h1>
         </div>
         <button id="close-window-btn" class="btn-default">Back</button>
     </div>

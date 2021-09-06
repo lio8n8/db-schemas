@@ -1,5 +1,6 @@
 import { DBSchema } from './js/DBSchema.js';
 import { data } from './js/data/example.js';
+import { Table } from './js/Table.js';
 
 console.log('Application started...');
 const schema = new DBSchema(data);
@@ -39,6 +40,33 @@ exportBtnEl.addEventListener('click', function () {
     exportWindowEl.style.display = 'flex';
 });
 
+
+
+// Themes.
+const createThemeWindowEl = document.getElementById('create-theme-window');
+const importThemesWindowEl = document.getElementById('import-themes-window');
+const exportThemesWindowEl = document.getElementById('export-themes-window');
+const createThemeBtnEl = document.getElementById('create-theme-btn');
+const importThemesBtnEl = document.getElementById('import-themes-btn');
+const exportThemesBtnEl = document.getElementById('export-themes-btn');
+
+createThemeBtnEl.addEventListener('click', function () {
+    windowWrapperEl.style.visibility = 'visible';
+    createThemeWindowEl.style.display = 'flex';
+});
+
+importThemesBtnEl.addEventListener('click', function () {
+    windowWrapperEl.style.visibility = 'visible';
+    importThemesWindowEl.style.display = 'flex';
+});
+
+exportThemesBtnEl.addEventListener('click', function () {
+    windowWrapperEl.style.visibility = 'visible';
+    exportThemesWindowEl.style.display = 'flex';
+});
+
+// Set default visibility for themes.
+themesEl.style.visibility = 'visible';
 themesBtnEl.addEventListener('click', function () {
     themesEl.style.visibility = themesEl.style.visibility == 'visible' ? 'hidden' : 'visible';
 });
@@ -47,6 +75,14 @@ closeWindowBtnEl.addEventListener('click', function () {
     closeWindow();
 });
 
+function closeWindow() {
+    windowWrapperEl.style.visibility = 'hidden';
+    importWindowEl.style.display = 'none';
+    exportWindowEl.style.display = 'none';
+    createThemeWindowEl.style.display = 'none';
+    importThemesWindowEl.style.display = 'none';
+    exportThemesWindowEl.style.display = 'none';
+}
 
 
 // TODO: Refactor.
@@ -107,13 +143,6 @@ function validateData(data) {
     return true;
 }
 
-function closeWindow() {
-    windowWrapperEl.style.visibility = 'hidden';
-    importWindowEl.style.display = 'none';
-    exportWindowEl.style.display = 'none';
-}
-
-
 let offsetX = 0;
 let offsetY = 0;
 const schemaEl = document.getElementById('schema');
@@ -162,3 +191,22 @@ function makeDraggable(evt) {
         offsetY = 0
     });
 }
+
+function createTheme() {
+    const themeViewEl = document.getElementById('theme-view');
+    const tableData = schema.getData().entityData[0];
+
+    tableData.position.x = 20;
+    tableData.position.y = 20;
+
+    const tableEl = new Table(tableData, schema.getTheme().getCurrentTheme());
+
+    themeViewEl.appendChild(tableEl.getSvgEl());
+}
+
+const saveThemeBtnEl = document.getElementById('save-theme-btn');
+saveThemeBtnEl.addEventListener('click', () => {
+    //createTheme();
+});
+
+createTheme();
