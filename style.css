@@ -148,7 +148,7 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 50%;
+    height: 60%;
 }
 
 
@@ -232,15 +232,13 @@ g.move, .dbschematitle, g:hover {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    justify-items: center;
     align-items: flex-start;
-    width: 50%;
-    height: 80%;
+    width: 80%;
+    height: 100%;
     background-color: #313030;
     color: #FFF;
-}
-
-.row {
-    margin: 5px 2rem;
+    padding: 1rem 0;
 }
 
 .save-theme-btn {
@@ -251,8 +249,26 @@ g.move, .dbschematitle, g:hover {
 
 .create-theme-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 1;
+    flex-wrap: wrap;
+    max-width: 600px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+    margin: 5px 0;
+}
+
+
+.create-theme-form label {
+    width: 100px;
+}
+
+.create-theme-form input {
+    width: 50px;
 }
 
 .theme-view {

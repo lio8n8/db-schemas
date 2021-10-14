@@ -1,7 +1,6 @@
-import { DBSchemaMetadata } from './DBSchemaMetadata.js';
 import { Table } from './Table.js';
 import { Theme } from './Theme.js';
-// import { data } from './data.js';
+import { TableRef } from './TableRef.js';
 export class DBSchema {
     constructor(data) {
         this.data = data;
@@ -23,7 +22,6 @@ export class DBSchema {
         });
 
         this.tables = [];
-        this.metadata = new DBSchemaMetadata();
 
         this.svgEl = document.getElementById('schema');
     }
@@ -77,7 +75,10 @@ export class DBSchema {
         // Render tables.
         this.createTables();
         this.tables.forEach(t => this.svgEl.appendChild(t.getSvgEl()));
-        //this.data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData, this.theme.getCurrentTheme()).getSvgEl()));
+        // this.data.entityData.forEach(entitData => this.svgEl.appendChild(new Table(entitData, this.theme.getCurrentTheme()).getSvgEl()));
+
+
+        // this.buildRefs();
     }
 
     createTables() {
@@ -100,4 +101,17 @@ export class DBSchema {
             this.svgEl.removeChild(this.svgEl.lastChild);
         }
     }
+
+    /*buildRefs() {
+        let ref = new TableRef({
+            x1: 300,
+            y1: 100,
+            x2: 400,
+            y2: 200,
+            table1: 'User',
+            table2: 'Order'
+        }).pathEl;
+
+        this.svgEl.appendChild(ref);
+    }*/
 }

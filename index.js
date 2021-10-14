@@ -53,6 +53,8 @@ const exportThemesBtnEl = document.getElementById('export-themes-btn');
 createThemeBtnEl.addEventListener('click', function () {
     windowWrapperEl.style.visibility = 'visible';
     createThemeWindowEl.style.display = 'flex';
+
+    createTheme();
 });
 
 importThemesBtnEl.addEventListener('click', function () {
@@ -192,21 +194,47 @@ function makeDraggable(evt) {
     });
 }
 
+
+/*const createThemeFormEl = document.getElementById('create-theme-from');
+Object.keys(schema.getTheme().getCurrentTheme()).forEach(k => {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'row';
+
+    const labelEl = document.createElement('lable');
+    labelEl.set
+});*/
+
+const createThemeInputElements = Object.keys(schema.getTheme().getCurrentTheme()).reduce((r, k) => {
+    r[k] = document.getElementById(k);
+    return r;
+}, {});
+createThemeInputElements['themeName'] = document.getElementById('theme-name');
+
 function createTheme() {
     const themeViewEl = document.getElementById('theme-view');
-    const tableData = schema.getData().entityData[0];
+    const tableData = JSON.parse(JSON.stringify(schema.getData().entityData[0]));
 
     tableData.position.x = 20;
     tableData.position.y = 20;
 
     const tableEl = new Table(tableData, schema.getTheme().getCurrentTheme());
 
+    Object.keys(createThemeInputElements)
+        .forEach(k => {
+            if (createThemeInputElements[k]) {
+                createThemeInputElements[k].value = schema.getTheme().getCurrentTheme()[k]
+            }
+        });
+    createThemeInputElements.themeName.value = schema.getTheme().getCurrentTheme().name;
+
     themeViewEl.appendChild(tableEl.getSvgEl());
 }
 
 const saveThemeBtnEl = document.getElementById('save-theme-btn');
 saveThemeBtnEl.addEventListener('click', () => {
-    //createTheme();
+    /*const themeConfig = Object.keys(createThemeInputElements).reduce((config, k) => {
+        config[k] = createThemeInputElements[k].value;
+        return config;
+    }, {});*/
+    // console.log(themeConfig);
 });
-
-createTheme();

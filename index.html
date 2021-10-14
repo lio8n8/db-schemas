@@ -21,7 +21,7 @@
             <textarea id="schema-editor" class="schema-editor"></textarea>
         </div>
         <!-- TODO: Change id.-->
-        <svg id="schema" class="schema" xmlns="http://www.w3.org/2000/svg"> </svg>
+        <svg id="schema" class="schema" xmlns="http://www.w3.org/2000/svg"></svg>
         <div id="themes" class="themes">
             <!-- <div>
                 <label for="themes-file">Upload theme</label>
@@ -53,14 +53,95 @@
             <h1>Create theme</h1>
             <h2>Not yet implemented!</h2>
             <div class="inner-modal-window">
-                <form class="create-theme-form">
+                <form id="create-theme-form" class="create-theme-form">
+                    <!-- TODO: Generate elements in js code. -->
                     <div class="row">
-                        <label>Color 1</label>
-                        <input type="color" />
+                        <label>backgroundColor:</label>
+                        <input id="backgroundColor" type="color" />
                     </div>
                     <div class="row">
-                        <label>Color 2</label>
-                        <input type="color" />
+                        <label>backgroundColor2</label>
+                        <input id="backgroundColor2" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>backgroundColor3</label>
+                        <input id="backgroundColor3" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>borderColor</label>
+                        <input id="borderColor" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>color</label>
+                        <input id="color" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>color2</label>
+                        <input id="color2" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>titleColor</label>
+                        <input id="titleColor" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>tableRx</label>
+                        <input id="tableRx" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>tableRy</label>
+                        <input id="tableRy" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>tableWidth</label>
+                        <input id="tableWidth" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>rowHeight</label>
+                        <input id="rowHeight" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>titleFontSize</label>
+                        <input id="titleFontSize" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>titleFontWeight</label>
+                        <input id="titleFontWeight" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>rowFontSize</label>
+                        <input id="rowFontSize" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>rowFontWeight</label>
+                        <input id="rowFontWeight" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>rowColor</label>
+                        <input id="rowColor" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>schemaFontSize</label>
+                        <input id="schemaFontSize" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>schemaFontWeight</label>
+                        <input id="schemaFontWeight" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>schemaColor</label>
+                        <input id="schemaColor" type="color" />
+                    </div>
+                    <div class="row">
+                        <label>tableStrokeWidth</label>
+                        <input id="tableStrokeWidth" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>headerTextAnchor</label>
+                        <input id="headerTextAnchor" type="input" />
+                    </div>
+                    <div class="row">
+                        <label>rowTextAnchor</label>
+                        <input id="rowTextAnchor" type="input" />
                     </div>
                     <div class="row">
                         <label for="theme-name">Theme name: </label>
