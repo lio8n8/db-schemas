@@ -1,6 +1,6 @@
 # DB Schemas 
-[Go to application](https://lio8n8.github.io/db-schemas/)   
-Customize the view of database schemas. Create and save your own style.
+DB Schemas it's a tool that help to draw a database diagram.   
+[Go to application](https://lio8n8.github.io/db-schemas/)  
 
 ## Installation   
 TODO: Add description.   
@@ -13,4 +13,4 @@ TODO: Add description.
 
 ### TODO:    
 Add DB relations.    
-Add validations   
+Add validations.   

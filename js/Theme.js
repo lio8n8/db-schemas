@@ -16,64 +16,7 @@ export class Theme {
 
     init(callback) {
 
-        defaultThemes.forEach(theme => {
-            const themeEl = document.createElement('div');
-            themeEl.className = 'theme';
-            themeEl.id = theme.name;
-
-            const themeViewEl = document.createElement('div');
-            themeViewEl.id = theme.name;
-            themeViewEl.className = 'theme-view';
-
-            const themeNameEl = document.createElement('span');
-            themeNameEl.textContent = theme.name;
-
-            const themeColorsEl = document.createElement('div');
-            themeColorsEl.className = 'theme-colors';
-
-            // Colors.
-            const backgroundColor = document.createElement('div');
-            backgroundColor.className = 'theme-color';
-            backgroundColor.style.backgroundColor = theme.backgroundColor;
-            themeColorsEl.appendChild(backgroundColor);
-
-            const backgroundColor2 = document.createElement('div');
-            backgroundColor2.className = 'theme-color';
-            backgroundColor2.style.backgroundColor = theme.backgroundColor2;
-            themeColorsEl.appendChild(backgroundColor2);
-
-            const borderColor = document.createElement('div');
-            borderColor.className = 'theme-color';
-            borderColor.style.backgroundColor = theme.borderColor;
-            themeColorsEl.appendChild(borderColor);
-
-            const schemaBackgroundColor = document.createElement('div');
-            schemaBackgroundColor.className = 'theme-color';
-            schemaBackgroundColor.style.backgroundColor = theme.backgroundColor3;
-            themeColorsEl.appendChild(schemaBackgroundColor);
-
-            const deleteIcon = document.createElement('img');
-            deleteIcon.className = 'theme-delete-icon'
-            deleteIcon.setAttribute('src', 'src/images/delete.svg');
-            deleteIcon.id = theme.name;
-
-            const editIcon = document.createElement('img');
-            editIcon.className = 'theme-edit-icon'
-            editIcon.setAttribute('src', 'src/images/edit.svg');
-            editIcon.id = theme.name;
-
-            themeViewEl.appendChild(themeNameEl);
-            themeViewEl.appendChild(themeColorsEl);
-
-            themeEl.appendChild(themeViewEl);
-            themeEl.appendChild(editIcon);
-            themeEl.appendChild(deleteIcon);
-            this.themeListContainerEl.appendChild(themeEl);
-
-            themeViewEl.addEventListener('click', callback);
-            deleteIcon.addEventListener('click', () => console.info('Not yet implemented!'));
-            editIcon.addEventListener('click', () => console.info('Not yet implemented!'));
-        });
+        defaultThemes.forEach(theme => this.render(theme, callback));
 
         // Set default theme.
         this.currentThemeEl = document.getElementById(defaultThemes[0].name);
@@ -120,7 +63,62 @@ export class Theme {
 
     }
 
-    render() {
+    render(theme, callback) {
+        const themeEl = document.createElement('div');
+        themeEl.className = 'theme';
+        themeEl.id = theme.name;
 
+        const themeViewEl = document.createElement('div');
+        themeViewEl.id = theme.name;
+        themeViewEl.className = 'theme-view';
+
+        const themeNameEl = document.createElement('span');
+        themeNameEl.textContent = theme.name;
+
+        const themeColorsEl = document.createElement('div');
+        themeColorsEl.className = 'theme-colors';
+
+        // Colors.
+        const backgroundColor = document.createElement('div');
+        backgroundColor.className = 'theme-color';
+        backgroundColor.style.backgroundColor = theme.backgroundColor;
+        themeColorsEl.appendChild(backgroundColor);
+
+        const backgroundColor2 = document.createElement('div');
+        backgroundColor2.className = 'theme-color';
+        backgroundColor2.style.backgroundColor = theme.backgroundColor2;
+        themeColorsEl.appendChild(backgroundColor2);
+
+        const borderColor = document.createElement('div');
+        borderColor.className = 'theme-color';
+        borderColor.style.backgroundColor = theme.borderColor;
+        themeColorsEl.appendChild(borderColor);
+
+        const schemaBackgroundColor = document.createElement('div');
+        schemaBackgroundColor.className = 'theme-color';
+        schemaBackgroundColor.style.backgroundColor = theme.backgroundColor3;
+        themeColorsEl.appendChild(schemaBackgroundColor);
+
+        const deleteIcon = document.createElement('img');
+        deleteIcon.className = 'theme-delete-icon'
+        deleteIcon.setAttribute('src', 'src/images/delete.svg');
+        deleteIcon.id = theme.name;
+
+        const editIcon = document.createElement('img');
+        editIcon.className = 'theme-edit-icon'
+        editIcon.setAttribute('src', 'src/images/edit.svg');
+        editIcon.id = theme.name;
+
+        themeViewEl.appendChild(themeNameEl);
+        themeViewEl.appendChild(themeColorsEl);
+
+        themeEl.appendChild(themeViewEl);
+        themeEl.appendChild(editIcon);
+        themeEl.appendChild(deleteIcon);
+        this.themeListContainerEl.appendChild(themeEl);
+
+        themeViewEl.addEventListener('click', callback);
+        deleteIcon.addEventListener('click', () => console.info('Not yet implemented!'));
+        editIcon.addEventListener('click', () => console.info('Not yet implemented!'));
     }
 }

@@ -229,12 +229,13 @@ g.move, .dbschematitle, g:hover {
 }
 
 .inner-modal-window {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     justify-items: center;
     align-items: flex-start;
-    width: 80%;
+    width: 70%;
     height: 100%;
     background-color: #313030;
     color: #FFF;
@@ -245,6 +246,9 @@ g.move, .dbschematitle, g:hover {
     width: 5rem;
     height: 2.4rem;
     align-self: flex-end;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
 }
 
 .create-theme-form {
@@ -253,22 +257,60 @@ g.move, .dbschematitle, g:hover {
     flex-grow: 1;
     flex-wrap: wrap;
     max-width: 600px;
+    font-size: 1rem;
+    font-family: sans-serif;
 }
 
 .row {
     display: flex;
     justify-content: space-between;
     width: 250px;
-    margin: 5px 0;
+    margin: 5px 20px;
 }
 
 
 .create-theme-form label {
-    width: 100px;
+    max-width: 8rem;
 }
 
 .create-theme-form input {
-    width: 50px;
+    width: 3.2rem;
+    height: 1.2rem;
+    border: none;
+}
+
+.create-theme-form input:hover {
+    border: none;
+    outline: none;
+}
+
+.create-theme-form input:focus {
+    border: none;
+    outline: none;
+}
+
+.create-theme-form input:active {
+    border: none;
+    outline: none;
+}
+
+.create-theme-form input[type=color] {
+    -webkit-appearance: none;
+}
+
+.create-theme-form input[type=color]::-webkit-color-swatch {
+    border: none;
+}
+
+.create-theme-form input[type=color]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.create-theme-form input[type=text] {
+    background-color: #313030;
+    color: #FFF;
+    border-bottom: 1px solid #FFF;
+    font-size: 1.1rem;
 }
 
 .theme-view {

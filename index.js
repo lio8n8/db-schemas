@@ -231,10 +231,15 @@ function createTheme() {
 }
 
 const saveThemeBtnEl = document.getElementById('save-theme-btn');
-saveThemeBtnEl.addEventListener('click', () => {
-    /*const themeConfig = Object.keys(createThemeInputElements).reduce((config, k) => {
-        config[k] = createThemeInputElements[k].value;
+saveThemeBtnEl.addEventListener('click', function(e) {
+    // e.preventDefault();
+    // e.stopPropagation();
+    const themeConfig = Object.keys(createThemeInputElements).reduce((config, k) => {
+        if (createThemeInputElements[k]) {
+            config[k] = createThemeInputElements[k].value;
+        }
         return config;
-    }, {});*/
-    // console.log(themeConfig);
+    }, {});
+    console.log(themeConfig);
+    // return 0;
 });
