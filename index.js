@@ -256,7 +256,6 @@ saveThemeBtnEl.addEventListener('click', function (e) {
         }
         return config;
     }, {});
-    console.log(themeConfig);
 
     // TODO: Fix theme name variable.
     themeConfig.name = themeConfig.themeName;
@@ -265,4 +264,27 @@ saveThemeBtnEl.addEventListener('click', function (e) {
         schema.render();
     });
     closeWindow();
+});
+
+// TODO: Refactor.
+document.querySelectorAll('.table-view-config').forEach(inputEl => {
+    inputEl.addEventListener('change', event => {
+        const themeViewEl = document.getElementById('theme-view');
+        const themeConfig = Object.keys(createThemeInputElements).reduce((config, k) => {
+            if (createThemeInputElements[k]) {
+                config[k] = createThemeInputElements[k].value;
+            }
+            return config;
+        }, {});
+
+        const tableData = JSON.parse(JSON.stringify(schema.getData().entityData[0]));
+
+        tableData.position.x = 20;
+        tableData.position.y = 20;
+
+        const tableEl = new Table(tableData, themeConfig);
+
+        themeViewEl.removeChild(themeViewEl.lastChild);
+        themeViewEl.appendChild(tableEl.getSvgEl());
+    });
 });
