@@ -55,9 +55,10 @@ export class Theme {
         return this.themes;
     }
 
-    add(theme) {
+    add(theme, callback) {
         this.validate(theme);
-        this.customThemes.push(theme);
+        this.themes.push(theme);
+        this.render(theme, callback);
     }
 
     edit(themeId) {
@@ -130,12 +131,25 @@ export class Theme {
         themeEl.appendChild(deleteIcon);
         this.themeListContainerEl.appendChild(themeEl);
 
-        themeViewEl.addEventListener('click', callback);
-        deleteIcon.addEventListener('click', () => console.info('Not yet implemented!'));
-        /*editIcon.addEventListener('click', event => {
-            console.info('Not yet implemented!')
+        themeViewEl.addEventListener('click', event => {
+            // TODO: Check if theme was changed.
+            this.updateActiveTheme(event);
+            callback();
+        });
+        deleteIcon.addEventListener('click', () => alert('Not yet implemented!'));
+        editIcon.addEventListener('click', event => {
+            alert('Not yet implemented!')
 
-            this.edit(event.target.id);
-        });*/
+            // this.edit(event.target.id);
+        });
+    }
+
+    updateActiveTheme(event) {
+        if (this.currentThemeEl) {
+            this.currentThemeEl.classList.remove('active');
+        }
+        this.currentTheme = this.themes.find(t => t.name == event.target.id);
+        this.setCurrentThemeEl(event.target);
+        event.target.classList.add('active');
     }
 }

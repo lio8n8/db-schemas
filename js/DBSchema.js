@@ -8,15 +8,6 @@ export class DBSchema {
 
         this.theme = new Theme();
         this.theme.init(event => {
-            // TODO: Move to Theme class.
-            if (this.theme.currentThemeEl) {
-                this.theme.currentThemeEl.classList.remove('active');
-            }
-            this.theme.currentTheme = this.theme.themes.find(t => t.name == event.target.id);
-            this.theme.setCurrentThemeEl(event.target);
-            event.target.classList.add('active');
-
-            // TODO: Check if theme was changed.
             this.clear();
             this.render();
         });
@@ -48,6 +39,7 @@ export class DBSchema {
 
     }
 
+    // TODO: Refactor.
     render() {
 
         // Set brackground.

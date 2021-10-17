@@ -68,6 +68,18 @@ importThemesBtnEl.addEventListener('click', function () {
 exportThemesBtnEl.addEventListener('click', function () {
     windowWrapperEl.style.visibility = 'visible';
     exportThemesWindowEl.style.display = 'flex';
+
+    const json = JSON.stringify(schema.getTheme().getThemes());
+    const blob = new Blob([json], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.download = "themes.json";
+    a.href = url;
+    a.textContent = "themes.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 });
 
 // Set default visibility for themes.
@@ -107,6 +119,7 @@ saveAsSvgBtnEl.addEventListener('click', () => {
     document.body.removeChild(downloadLink);
 });
 
+// TODO: Make more generic and reusable.
 const saveAsJSONBtnEl = document.getElementById('save-as-json');
 saveAsJSONBtnEl.addEventListener('click', () => {
     // TODO: Validate.
@@ -244,5 +257,12 @@ saveThemeBtnEl.addEventListener('click', function (e) {
         return config;
     }, {});
     console.log(themeConfig);
+
+    // TODO: Fix theme name variable.
+    themeConfig.name = themeConfig.themeName;
+    schema.getTheme().add(themeConfig, () => {
+        schema.clear();
+        schema.render();
+    });
     closeWindow();
 });
