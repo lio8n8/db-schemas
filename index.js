@@ -23,6 +23,7 @@ schemaEditorEl.addEventListener('change', event => {
 const importBtnEl = document.getElementById('import-btn');
 const exportBtnEl = document.getElementById('export-btn');
 const themesBtnEl = document.getElementById('themes-btn');
+const createProjectBtnEl = document.getElementById('create-project-btn');
 const windowWrapperEl = document.getElementById('window-wrapper');
 const exportWindowEl = document.getElementById('export-window');
 const importWindowEl = document.getElementById('import-window');
@@ -39,6 +40,8 @@ exportBtnEl.addEventListener('click', function () {
     windowWrapperEl.style.visibility = 'visible';
     exportWindowEl.style.display = 'flex';
 });
+
+createProjectBtnEl.addEventListener('click', () => alert('Not yet implemented!'));
 
 
 
@@ -231,9 +234,9 @@ function createTheme() {
 }
 
 const saveThemeBtnEl = document.getElementById('save-theme-btn');
-saveThemeBtnEl.addEventListener('click', function(e) {
-    // e.preventDefault();
-    // e.stopPropagation();
+saveThemeBtnEl.addEventListener('click', function (e) {
+    // TODO: Explore why page reloads on click and fix it.
+    e.preventDefault();
     const themeConfig = Object.keys(createThemeInputElements).reduce((config, k) => {
         if (createThemeInputElements[k]) {
             config[k] = createThemeInputElements[k].value;
@@ -241,5 +244,5 @@ saveThemeBtnEl.addEventListener('click', function(e) {
         return config;
     }, {});
     console.log(themeConfig);
-    // return 0;
+    closeWindow();
 });

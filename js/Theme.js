@@ -1,4 +1,5 @@
 import { defaultThemes } from './data/defaultThemes.js';
+import { LocalStorageManager } from './LocalStorageManager.js';
 
 export class Theme {
     constructor() {
@@ -6,12 +7,15 @@ export class Theme {
         this.currentTheme = defaultThemes[0];
         this.currentThemeEl = null;
         this.themeListContainerEl = document.getElementById('themes-list');
+        this.customThemes = [];
 
         this.actionbuttons = {
             create: document.getElementById('create-theme-btn'),
             import: document.getElementById('import-themes-btn'),
             export: document.getElementById('export-theme-btn')
         };
+
+        LocalStorageManager.init(JSON.stringify(this.themes), this.currentTheme);
     }
 
     init(callback) {
@@ -52,7 +56,16 @@ export class Theme {
     }
 
     add(theme) {
+        this.validate(theme);
+        this.customThemes.push(theme);
+    }
 
+    edit(themeId) {
+        const createThemeWindowEl = document.getElementById('create-theme-window');
+        const windowWrapperEl = document.getElementById('window-wrapper');
+
+        windowWrapperEl.style.visibility = 'visible';
+        createThemeWindowEl.style.display = 'flex';
     }
 
     save() {
@@ -119,6 +132,10 @@ export class Theme {
 
         themeViewEl.addEventListener('click', callback);
         deleteIcon.addEventListener('click', () => console.info('Not yet implemented!'));
-        editIcon.addEventListener('click', () => console.info('Not yet implemented!'));
+        /*editIcon.addEventListener('click', event => {
+            console.info('Not yet implemented!')
+
+            this.edit(event.target.id);
+        });*/
     }
 }

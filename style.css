@@ -235,7 +235,8 @@ g.move, .dbschematitle, g:hover {
     justify-content: center;
     justify-items: center;
     align-items: flex-start;
-    width: 70%;
+    width: 50%;
+    min-width: 54rem;
     height: 100%;
     background-color: #313030;
     color: #FFF;
@@ -268,6 +269,10 @@ g.move, .dbschematitle, g:hover {
     margin: 5px 20px;
 }
 
+.theme-name-row {
+    color:#1f93c0;
+    font-weight: 500;;
+}
 
 .create-theme-form label {
     max-width: 8rem;
@@ -316,4 +321,11 @@ g.move, .dbschematitle, g:hover {
 .theme-view {
     display: flex;
     height: 100%;
+}
+
+.btn-export {
+    background-color: #126608;
+    background-color: #126608;
+    width: 12rem;
+    margin: 1rem;
 }

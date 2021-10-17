@@ -150,7 +150,7 @@ export class Table {
         const fieldType = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         fieldType.id = `${this.entityData.name}-propertytype`;
         fieldType.appendChild(document.createTextNode(type));
-        fieldType.setAttribute('x', x + MAX_CELL_WIDTH)
+        fieldType.setAttribute('x', x + theme.tableWidth * 0.55)
         fieldType.setAttribute('moveable', true);
 
         text.appendChild(fieldName);
