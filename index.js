@@ -226,15 +226,8 @@ const createThemeInputElements = Object.keys(schema.getTheme().getCurrentTheme()
 }, {});
 createThemeInputElements['themeName'] = document.getElementById('theme-name');
 
+const themeViewEl = document.getElementById('theme-view');
 function createTheme() {
-    const themeViewEl = document.getElementById('theme-view');
-    const tableData = JSON.parse(JSON.stringify(schema.getData().entityData[0]));
-
-    tableData.position.x = 20;
-    tableData.position.y = 20;
-
-    const tableEl = new Table(tableData, schema.getTheme().getCurrentTheme());
-
     Object.keys(createThemeInputElements)
         .forEach(k => {
             if (createThemeInputElements[k]) {
@@ -243,19 +236,29 @@ function createTheme() {
         });
     createThemeInputElements.themeName.value = schema.getTheme().getCurrentTheme().name;
 
-    themeViewEl.appendChild(tableEl.getSvgEl());
+    renderTable(schema.getTheme().getCurrentTheme());
 }
+
+// TODO: Refactor.
+document.querySelectorAll('.table-view-config').forEach(inputEl => {
+    inputEl.addEventListener('change', event => {
+        const themeConfig = readThemeEditorInput();
+        themeViewEl.removeChild(themeViewEl.lastChild);
+        renderTable(themeConfig);
+    });
+});
 
 const saveThemeBtnEl = document.getElementById('save-theme-btn');
 saveThemeBtnEl.addEventListener('click', function (e) {
     // TODO: Explore why page reloads on click and fix it.
     e.preventDefault();
-    const themeConfig = Object.keys(createThemeInputElements).reduce((config, k) => {
-        if (createThemeInputElements[k]) {
-            config[k] = createThemeInputElements[k].value;
-        }
-        return config;
-    }, {});
+    const themeConfig = readThemeEditorInput();
+
+    // TODO: Add validtion.
+    if (schema.getTheme().getThemes().find(t => t.name == themeConfig.themeName)) {
+        alert('Theme already exists!');
+        return;
+    }
 
     // TODO: Fix theme name variable.
     themeConfig.name = themeConfig.themeName;
@@ -266,25 +269,22 @@ saveThemeBtnEl.addEventListener('click', function (e) {
     closeWindow();
 });
 
-// TODO: Refactor.
-document.querySelectorAll('.table-view-config').forEach(inputEl => {
-    inputEl.addEventListener('change', event => {
-        const themeViewEl = document.getElementById('theme-view');
-        const themeConfig = Object.keys(createThemeInputElements).reduce((config, k) => {
-            if (createThemeInputElements[k]) {
-                config[k] = createThemeInputElements[k].value;
-            }
-            return config;
-        }, {});
+function readThemeEditorInput() {
+    return Object.keys(createThemeInputElements).reduce((config, k) => {
+        if (createThemeInputElements[k]) {
+            config[k] = createThemeInputElements[k].value;
+        }
+        return config;
+    }, {});
+}
 
-        const tableData = JSON.parse(JSON.stringify(schema.getData().entityData[0]));
+function renderTable(themeConfig) {
+    const tableData = JSON.parse(JSON.stringify(schema.getData().entityData[0]));
 
         tableData.position.x = 20;
         tableData.position.y = 20;
 
         const tableEl = new Table(tableData, themeConfig);
 
-        themeViewEl.removeChild(themeViewEl.lastChild);
         themeViewEl.appendChild(tableEl.getSvgEl());
-    });
-});
+}
