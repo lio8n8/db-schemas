@@ -150,7 +150,7 @@ export class Table {
         const fieldType = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         fieldType.id = `${this.entityData.name}-propertytype`;
         fieldType.appendChild(document.createTextNode(type));
-        fieldType.setAttribute('x', x + theme.tableWidth * 0.55)
+        fieldType.setAttribute('x', this.calculateXOfSecondColumn(x))
         fieldType.setAttribute('moveable', true);
 
         text.appendChild(fieldName);
@@ -186,7 +186,11 @@ export class Table {
             r.setAttribute('y', tableTextY + this.theme.rowHeight * (i + 1));
 
             // Update position for field type.
-            r.children[1].setAttribute('x', x + MAX_CELL_WIDTH + TABLE_PADDING);
+            r.children[1].setAttribute('x', this.calculateXOfSecondColumn(x));
         });
+    }
+
+    calculateXOfSecondColumn(tableX) {
+        return tableX + this.theme.tableWidth * 0.55;
     }
 }
