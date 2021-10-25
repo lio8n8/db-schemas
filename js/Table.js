@@ -33,6 +33,8 @@ export class Table {
         g.setAttribute('x', this.x);
         g.setAttribute('y', this.y);
 
+        let primaryKey = null;
+
         const table = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
         table.id = `${this.entityData.name}-table`;
         table.setAttribute('moveable', true);
@@ -79,6 +81,12 @@ export class Table {
                 name: row.name,
                 type: row.type
             });
+
+            if (this.entityData.primaryKey == row.name) {
+                primaryKey = this.createPrimaryKeyIcon(this.x, tableTextY + this.theme.rowHeight * (i + 1) - 0.6 * this.theme.rowHeight, this.theme.rowColor);
+                g.appendChild(primaryKey);
+            }
+
             g.appendChild(rowText)
 
             this.tableEl.rowTexts.push(rowText);
@@ -86,6 +94,7 @@ export class Table {
 
         this.tableEl.header = header;
         this.tableEl.table = table;
+        this.tableEl.primaryKey = primaryKey;
 
         // Used to move table.
         const transparentTable = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
@@ -129,9 +138,9 @@ export class Table {
     }
 
     createTableRow(configsData) {
-        const { x, y, theme, name, type } = configsData;
+        const { x, y, theme, name, type, isPrimaryKey } = configsData;
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        text.id = `${this.entityData.name}-property`;
+        text.id = `${name}-property`;
         text.setAttribute('x', x);
         text.setAttribute('y', y);
         text.setAttribute('text-anchor', theme.rowTextAnchor);
@@ -144,11 +153,9 @@ export class Table {
 
         const fieldName = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         fieldName.appendChild(document.createTextNode(name));
-        fieldName.id = `${this.entityData.name}-propertyname`;
         fieldName.setAttribute('moveable', true);
 
         const fieldType = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
-        fieldType.id = `${this.entityData.name}-propertytype`;
         fieldType.appendChild(document.createTextNode(type));
         fieldType.setAttribute('x', this.calculateXOfSecondColumn(x))
         fieldType.setAttribute('moveable', true);
@@ -157,6 +164,31 @@ export class Table {
         text.appendChild(fieldType);
 
         return text;
+    }
+
+    createPrimaryKeyIcon(x, y, color) {
+        /*const primaryKeyIcon = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+
+        primaryKeyIcon.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'src/images/key.svg');
+        primaryKeyIcon.setAttributeNS(null, 'width', 24);
+        primaryKeyIcon.setAttributeNS(null, 'height', 24);
+        primaryKeyIcon.setAttributeNS(null, 'x', x);
+        primaryKeyIcon.setAttributeNS(null, 'y', y);
+        primaryKeyIcon.setAttributeNS(null, 'visibility', 'visible');
+
+        return primaryKeyIcon;*/
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const primaryKeyIcon = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+        primaryKeyIcon.setAttributeNS(null, 'd', 'm6.35866,19.80143c-0.42333,0 -0.76589,0.2985 -0.76589,0.66667s0.34256,0.66667 0.76589,0.66667l3.69182,0l0,0.19857c0,0.36817 0.34256,0.66667 0.76589,0.66667s0.76589,-0.2985 0.76589,-0.66667l0,-11.40108c2.16757,-0.31885 3.82496,-1.95996 3.82496,-3.93616c0.00001,-2.20345 -2.05907,-3.99609 -4.59084,-3.99609s-4.5916,1.79264 -4.5916,3.99609c0,1.97619 1.65799,3.61731 3.82571,3.93616l0,6.7253l-3.69182,0c-0.42333,0 -0.76589,0.2985 -0.76589,0.66667s0.34256,0.66667 0.76589,0.66667l3.69182,0l0,1.81055l-3.69183,0zm1.3979,-13.80534c0,-1.4681 1.37247,-2.66276 3.05982,-2.66276c1.6866,0 3.05907,1.19466 3.05907,2.66276c0,1.46843 -1.37247,2.66309 -3.05907,2.66309c-1.68735,0 -3.05982,-1.19466 -3.05982,-2.66309z');
+        svg.setAttributeNS(null, 'x', x);
+        svg.setAttributeNS(null, 'y', y);
+        primaryKeyIcon.setAttributeNS(null, 'fill', color);
+
+        svg.appendChild(primaryKeyIcon);
+        
+        return svg;
     }
 
     calculateTableHeight(entityData) {
@@ -186,7 +218,14 @@ export class Table {
             r.setAttribute('y', tableTextY + this.theme.rowHeight * (i + 1));
 
             // Update position for field type.
-            r.children[1].setAttribute('x', this.calculateXOfSecondColumn(x));
+            // TODO: Fix. Add primary key width.
+            r.children[1].setAttribute('x', this.calculateXOfSecondColumn(x) + 20);
+
+            // Move primary key
+            if (r.id.split('-')[0] == this.entityData.primaryKey) {
+                this.tableEl.primaryKey.setAttribute('x', x);
+                this.tableEl.primaryKey.setAttribute('y', tableTextY + this.theme.rowHeight * (i + 1) - 0.6 * this.theme.rowHeight);
+            }
         });
     }
 

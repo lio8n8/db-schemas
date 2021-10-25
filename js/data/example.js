@@ -12,6 +12,7 @@ export const data = {
             x: 100,
             y: 100
         },
+        primaryKey: 'id',
         rows: [
             {
                 type: 'String',
@@ -61,6 +62,7 @@ export const data = {
             x: 400,
             y: 100
         },
+        primaryKey: 'id',
         rows: [
             {
                 type: 'String',
@@ -98,6 +100,7 @@ export const data = {
             x: 340,
             y: 380
         },
+        primaryKey: 'id',
         rows: [
             {
                 type: 'String',
