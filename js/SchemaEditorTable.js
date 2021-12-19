@@ -7,6 +7,13 @@ export class SchemaEditorTable {
     generateTableDataElAndAppend() {
         const tableDataEl = document.createElement('div');
         tableDataEl.className = "table-data";
+        tableDataEl.setAttribute('isOpen', 'false');
+
+        const deleteTableIconEl = document.createElement('img');
+        deleteTableIconEl.className = 'delete-table-data-icon';
+        deleteTableIconEl.src = 'src/images/delete.svg';
+
+        tableDataEl.appendChild(deleteTableIconEl);
 
         const tableDataTitle = document.createElement('div');
         tableDataTitle.className = 'table-data-row table-data-title';

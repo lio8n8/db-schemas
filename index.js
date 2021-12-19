@@ -1,14 +1,15 @@
 import { DBSchema } from './js/DBSchema.js';
-import { data } from './js/data/example.js';
+// import { data } from './js/data/example.js';
+import { DataRepository } from './js/DataRepository.js';
 import { Table } from './js/Table.js';
 
 console.log('Application started...');
-const schema = new DBSchema(data);
+const schema = new DBSchema(new DataRepository());
 
 schema.render();
 
-const schemaEditorEl = document.getElementById('schema-editor');
-schemaEditorEl.value = JSON.stringify(data, null, 2);
+
+/*schemaEditorEl.value = JSON.stringify(data, null, 2);
 schemaEditorEl.addEventListener('change', event => {
     const inputData = JSON.parse(event.target.value);
     if (!validateData(inputData)) {
@@ -18,7 +19,7 @@ schemaEditorEl.addEventListener('change', event => {
     schema.setData(inputData);
     schema.clear();
     schema.render();
-});
+});*/
 
 const importBtnEl = document.getElementById('import-btn');
 const exportBtnEl = document.getElementById('export-btn');
@@ -123,7 +124,7 @@ saveAsSvgBtnEl.addEventListener('click', () => {
 const saveAsJSONBtnEl = document.getElementById('save-as-json');
 saveAsJSONBtnEl.addEventListener('click', () => {
     // TODO: Validate.
-    var data = schemaEditorEl.value;
+    // var data = schemaEditorEl.value;
     var json = JSON.stringify(schema.getData());
     var blob = new Blob([json], { type: "application/json" });
     var url = URL.createObjectURL(blob);
@@ -149,7 +150,7 @@ uploadFileInputEl.addEventListener('change', event => {
         schema.clear();
         schema.render();
 
-        schemaEditorEl.value = JSON.stringify(data, null, 2);
+        // schemaEditorEl.value = JSON.stringify(data, null, 2);
 
         closeWindow();
     }
@@ -185,7 +186,9 @@ function makeDraggable(evt) {
 
             schema.findByByTableId(selectedElId).move(xDiff, yDiff);
             schema.updateTableCoordinates(selectedElId, xDiff, yDiff);
-            schemaEditorEl.value = JSON.stringify(schema.getData(), null, 2);
+            // schemaEditorEl.value = JSON.stringify(schema.getData(), null, 2);
+
+            schema.buildRefs();
         }
     });
 
@@ -287,4 +290,17 @@ function renderTable(themeConfig) {
         const tableEl = new Table(tableData, themeConfig);
 
         themeViewEl.appendChild(tableEl.getSvgEl());
+}
+
+const tableDataElems = document.getElementsByClassName('table-data');
+
+for(let i = 0; i < tableDataElems.length; i++) {
+    console.log(tableDataElems);
+    const el = tableDataElems[i];
+    el.addEventListener('click', event => {
+        let isOpen = !!el.getAttribute('isOpen'); 
+        el.setAttribute('isOpen', `${!isOpen}`);
+        console.log(!!event.target.getAttribute('isOpen'));
+        console.log(el.children[1].children[0].value);
+    });
 }

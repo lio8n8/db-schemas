@@ -73,7 +73,13 @@ main {
 
 .schema-editor {
     display: flex;
-    flex: 25%;
+    flex-direction: column;
+    flex: 12%;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #443f38;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 textarea.schema-editor {
@@ -328,4 +334,60 @@ g.move, .dbschematitle, g:hover {
     background-color: #126608;
     width: 12rem;
     margin: 1rem;
+}
+
+.table-data {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background-color: #252422;
+    color: #FFF;
+    max-width: 18rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+}
+
+.table-data input {
+    border: none;
+    background-color: #252422;
+    color: #FFF;
+    border-bottom: 2px solid #2b3c42;
+    font-size: 0.9rem;
+    max-width: 8rem;
+    margin: 0 4px;
+}
+
+.table-data-row {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.table-data-title {
+    background-color:#2b3c42
+}
+
+.table-data input:hover {
+    border-bottom: 2px solid #2b3c42;
+    outline: none;
+}
+
+.table-data input:focus {
+    border-bottom: 2px solid #2b3c42;
+    outline: none;
+}
+
+.table-data input:active {
+    border-bottom: 2px solid #2b3c42;
+    outline: none;
+}
+
+.delete-table-data-icon {
+    display: flex;
+    align-self: end;
+    width: 12px;
+    height: 12px;
+    margin: 4px;
 }
