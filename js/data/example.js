@@ -4,11 +4,12 @@ export const data = {
             "x": "30%",
             "y": "50"
         },
-        "content": "Example"
+        "description": "Example"
     },
     "entityData": [
         {
             "name": "User",
+            "id": "user",
             "position": {
                 "x": 61,
                 "y": 51
@@ -59,6 +60,7 @@ export const data = {
         },
         {
             "name": "Product",
+            "id": "product",
             "position": {
                 "x": 584,
                 "y": 121
@@ -97,6 +99,7 @@ export const data = {
         },
         {
             "name": "Order",
+            "id": "order",
             "position": {
                 "x": 340,
                 "y": 380

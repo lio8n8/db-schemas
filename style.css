@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -94,7 +95,7 @@ textarea.schema-editor {
     margin: 0;
 }
 
-textarea.schema-editor::-webkit-scrollbar{
+textarea.schema-editor::-webkit-scrollbar {
     width: 8px;
 }
 
@@ -193,7 +194,8 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     align-items: center;
 }
 
-.theme .theme-colors, .theme span {
+.theme .theme-colors,
+.theme span {
     pointer-events: none;
 }
 
@@ -233,7 +235,9 @@ textarea.schema-editor::-webkit-scrollbar-thumb {
     font-size: 2rem;
 }
 
-g.move, .dbschematitle, g:hover {
+g.move,
+.dbschematitle,
+g:hover {
     cursor: move;
 }
 
@@ -279,8 +283,9 @@ g.move, .dbschematitle, g:hover {
 }
 
 .theme-name-row {
-    color:#1f93c0;
-    font-weight: 500;;
+    color: #1f93c0;
+    font-weight: 500;
+    ;
 }
 
 .create-theme-form label {
@@ -347,18 +352,18 @@ g.move, .dbschematitle, g:hover {
     background-color: #252422;
     color: #FFF;
     max-width: 18rem;
-    padding: 0.5rem;
     margin: 0.5rem 0;
-    padding-bottom: 2.4rem;
     border-radius: 4px;
+    border: 1px solid #54810a;
+    padding: 2rem 0.5rem;
 }
 
 .table-data input {
     border: none;
     background-color: #252422;
     color: #FFF;
-    border-bottom: 2px solid #2b3c42;
-    font-size: 0.9rem;
+    border-bottom: 2px solid #54810a;
+    font-size: 1rem;
     max-width: 8rem;
     margin: 0 4px;
 }
@@ -371,21 +376,22 @@ g.move, .dbschematitle, g:hover {
 }
 
 .table-data-title {
-    background-color:#2b3c42
+    background-color: #54810a;
+    font-size: 1.2rem;
 }
 
 .table-data input:hover {
-    border-bottom: 2px solid #2b3c42;
+    border-bottom: 2px solid #54810a;
     outline: none;
 }
 
 .table-data input:focus {
-    border-bottom: 2px solid #2b3c42;
+    border-bottom: 2px solid #54810a;
     outline: none;
 }
 
 .table-data input:active {
-    border-bottom: 2px solid #2b3c42;
+    border-bottom: 2px solid #54810a;
     outline: none;
 }
 
@@ -397,13 +403,25 @@ g.move, .dbschematitle, g:hover {
     margin: 4px;
 }
 
-.table-data-add-row-btn {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    flex-grow: 1;
+.table-data-ctrl-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -2rem;
+}
+
+.table-data-ctrl-btn {
     width: 5rem;
     height: 1.4rem;
     margin: 0.4rem 1rem;
-    background-color: #2d3e11;
+    border: 1px solid #54810a;
+}
+
+.table-data-add-row-btn {
+    background-color: #1c1412;
+}
+
+.table-data-delete-table-btn {
+    background-color: #89062a;
+    width: 7rem;
 }

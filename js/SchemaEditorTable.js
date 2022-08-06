@@ -14,11 +14,19 @@ export class SchemaEditorTable {
         tableDataEl.id = `${this.entityData.id}-table-editor`;
         tableDataEl.setAttribute('isOpen', 'false');
 
-        const deleteTableIconEl = document.createElement('img');
-        deleteTableIconEl.className = 'delete-table-data-icon';
-        deleteTableIconEl.src = 'src/images/delete.svg';
 
-        tableDataEl.appendChild(deleteTableIconEl);
+        const tableDataRowBtnsEl = document.createElement('div');
+        tableDataRowBtnsEl.className = 'table-data-ctrl-btns';
+        tableDataRowBtnsEl.appendChild(this.addRowBtn(tableDataEl));
+        tableDataRowBtnsEl.appendChild(this.deleteTableBtn(tableDataEl));
+        tableDataEl.appendChild(tableDataRowBtnsEl);
+
+
+        /*const deleteTableIconEl = document.createElement('img');
+        deleteTableIconEl.className = 'delete-table-data-icon';
+        deleteTableIconEl.src = 'src/images/delete.svg';*/
+
+        // tableDataEl.appendChild(deleteTableIconEl);
 
         const tableDataTitle = document.createElement('div');
         tableDataTitle.className = 'table-data-row table-data-title';
@@ -42,10 +50,6 @@ export class SchemaEditorTable {
         this.entityData.rows.forEach(row => {
             this.addRow(tableDataEl, row);
         });
-
-        const tableDataRowBtnsEl = document.createElement('div');
-        tableDataRowBtnsEl.className = 'table-data-row';
-        tableDataEl.appendChild(this.addRowBtn(tableDataEl));
 
         this.schemaEditorEl.appendChild(tableDataEl);
 
@@ -84,7 +88,7 @@ export class SchemaEditorTable {
 
     addRowBtn(tableDataEl) {
         const addRowBtn = document.createElement('button');
-        addRowBtn.className = 'btn-default table-data-add-row-btn';
+        addRowBtn.className = 'btn-default table-data-ctrl-btn table-data-add-row-btn';
         addRowBtn.innerHTML = 'Add row';
 
         addRowBtn.addEventListener('click', event => {
@@ -95,6 +99,18 @@ export class SchemaEditorTable {
 
             this.addRow(tableDataEl, row);
             this.entityData.rows.push(row);
+        });
+
+        return addRowBtn;
+    }
+
+    deleteTableBtn(tableDataEl) {
+        const addRowBtn = document.createElement('button');
+        addRowBtn.className = 'btn-default table-data-ctrl-btn table-data-delete-table-btn';
+        addRowBtn.innerHTML = 'Delete table';
+
+        addRowBtn.addEventListener('click', event => {
+            console.log('Not implemented yet!');
         });
 
         return addRowBtn;
