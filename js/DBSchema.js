@@ -83,6 +83,7 @@ export class DBSchema {
     createTables() {
         this.tables = [];
         this.dataRepository.getEntities().forEach(entity => this.tables.push(new Table(entity, this.theme.getCurrentTheme())));
+        this.dataRepository.updateEntity("User", {});
     }
 
     findByByTableId(id) {

@@ -18,9 +18,21 @@ export class SchemaEditorTable {
         const tableDataTitle = document.createElement('div');
         tableDataTitle.className = 'table-data-row table-data-title';
         tableDataTitle.textContent = this.entityData.name;
-
-
         tableDataEl.appendChild(tableDataTitle);
+
+        const coordinatesEl = document.createElement('div');
+        coordinatesEl.className = "table-data-row";
+        const xEl = document.createElement('input');
+        xEl.id = 'x-coord';
+        xEl.className = "table-data-name";
+        xEl.value = this.entityData.position.x;
+        const yEl = document.createElement('input');
+        yEl.id = 'y-coord';
+        yEl.className = "table-data-name";
+        yEl.value = this.entityData.position.y;
+        coordinatesEl.appendChild(xEl);
+        coordinatesEl.appendChild(yEl);
+        tableDataEl.appendChild(coordinatesEl);
 
         this.entityData.rows.forEach(row => {
             const tableDataRowEl = document.createElement('div');

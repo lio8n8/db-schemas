@@ -24,10 +24,13 @@ export class DataRepository {
         return this.data.entityData;
     }
 
+    findEntityByName(name) {
+        return this.data.entityData.find(entity => entity.name == name);
+    }
+
     getRefs() {
         return this.data.refs;
     }
-
 
     addEntity(entity) {
         this.data.entityData.push(entity);
@@ -36,7 +39,7 @@ export class DataRepository {
     }
 
     deleteByEntityName(name) {
-        if (this.data.entityData.lenght <= 0) {
+        if (this.data.entityData.length <= 0) {
             return [];
         }
 
@@ -60,5 +63,11 @@ export class DataRepository {
         this.data = data;
 
         return this.data;
+    }
+
+    updateEntity(name, data) {
+        const entity = this.findEntityByName(name);
+
+        console.log(entity);
     }
 }

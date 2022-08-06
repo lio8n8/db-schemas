@@ -22,7 +22,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 1,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test02',
@@ -47,7 +48,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 1,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test03',
@@ -72,7 +74,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 1,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test01',
@@ -97,7 +100,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 1,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test00',
@@ -122,7 +126,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 1,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test0',
@@ -147,7 +152,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 1,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test1',
@@ -172,7 +178,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 2,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test2',
@@ -197,7 +204,8 @@ export const defaultThemes = [
         schemaColor: '#000',
         tableStrokeWidth: 1,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     },
     {
         name: 'test3',
@@ -222,6 +230,7 @@ export const defaultThemes = [
         schemaColor: '#606c38',
         tableStrokeWidth: 2,
         headerTextAnchor: 'middle',
-        rowTextAnchor: 'start'
+        rowTextAnchor: 'start',
+        isLocked: true
     }
 ];
