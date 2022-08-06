@@ -98,7 +98,7 @@ export class Table {
 
         // Used to move table.
         const transparentTable = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        transparentTable.id = `${this.entityData.name}-table1`;
+        transparentTable.id = `${this.entityData.id}-table1`;
         transparentTable.setAttribute('moveable', true);
         transparentTable.setAttribute('x', this.x);
         transparentTable.setAttribute('y', this.y);

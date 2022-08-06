@@ -67,7 +67,7 @@ export class DBSchema {
 
         this.title = title;
 
-        var textNode = document.createTextNode(this.dataRepository.getData().title.content);
+        let textNode = document.createTextNode(this.dataRepository.getData().title.description);
         title.appendChild(textNode);
         this.svgEl.appendChild(title);
 
@@ -83,7 +83,7 @@ export class DBSchema {
     createTables() {
         this.tables = [];
         this.dataRepository.getEntities().forEach(entity => this.tables.push(new Table(entity, this.theme.getCurrentTheme())));
-        this.dataRepository.updateEntity("User", {});
+        // this.dataRepository.updateEntity("User", {});
     }
 
     findByByTableId(id) {
@@ -91,9 +91,18 @@ export class DBSchema {
     }
 
     updateTableCoordinates(tableId, x, y) {
-        let tableData = this.dataRepository.getEntities().find(t => t.name == tableId);
+        let tableData = this.dataRepository.getEntities().find(t => t.id == tableId);
         tableData.position.x = x;
         tableData.position.y = y;
+    }
+
+    updateTableCoordinatesInEditor(tableId, x, y){
+        let tableEditorEl = document.getElementById(`${tableId}-table-editor`);
+        let coordEl = tableEditorEl.childNodes[2];
+        coordEl.childNodes[0].value = x;
+        coordEl.childNodes[1].value = y;
+        console.log(tableId);
+        console.log(tableEditorEl);
     }
 
     clear() {

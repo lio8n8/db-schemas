@@ -4,9 +4,14 @@ export class SchemaEditorTable {
         this.entityData = entityData;
     }
 
+    /**
+     * Create table editor
+     * @returns table editor (HTML element)
+     */
     generateTableDataElAndAppend() {
         const tableDataEl = document.createElement('div');
         tableDataEl.className = "table-data";
+        tableDataEl.id = `${this.entityData.id}-table-editor`;
         tableDataEl.setAttribute('isOpen', 'false');
 
         const deleteTableIconEl = document.createElement('img');
@@ -35,25 +40,63 @@ export class SchemaEditorTable {
         tableDataEl.appendChild(coordinatesEl);
 
         this.entityData.rows.forEach(row => {
-            const tableDataRowEl = document.createElement('div');
-            tableDataRowEl.className = "table-data-row";
-
-            const tableDataNameEl = document.createElement('input');
-            tableDataNameEl.className = "table-data-name";
-            tableDataNameEl.value = row.name;
-
-            const tableDataTypeEl = document.createElement('input');
-            tableDataTypeEl.className = "table-data-type";
-            tableDataTypeEl.value = row.type;
-
-            tableDataRowEl.appendChild(tableDataNameEl);
-            tableDataRowEl.appendChild(tableDataTypeEl);
-
-            tableDataEl.appendChild(tableDataRowEl);
+            this.addRow(tableDataEl, row);
         });
+
+        const tableDataRowBtnsEl = document.createElement('div');
+        tableDataRowBtnsEl.className = 'table-data-row';
+        tableDataEl.appendChild(this.addRowBtn(tableDataEl));
 
         this.schemaEditorEl.appendChild(tableDataEl);
 
         return tableDataEl;
+    }
+
+    /**
+     * Create and append row in table editor.
+     * @param {Object} tableDataEl element to append row
+     * @param {Object} row contains name and type of field
+     */
+    addRow(tableDataEl, row) {
+        const tableDataRowEl = document.createElement('div');
+        tableDataRowEl.className = "table-data-row";
+
+        const tableDataNameEl = document.createElement('input');
+        tableDataNameEl.className = "table-data-name";
+        tableDataNameEl.value = row.name || 'example';
+
+        const tableDataTypeEl = document.createElement('input');
+        tableDataTypeEl.className = "table-data-type";
+        tableDataTypeEl.value = row.type || 'String';
+
+        tableDataRowEl.appendChild(tableDataNameEl);
+        tableDataRowEl.appendChild(tableDataTypeEl);
+
+        tableDataEl.appendChild(tableDataRowEl);
+
+        tableDataNameEl.addEventListener('input', event => {
+            row.name = event.target.value;
+        });
+        tableDataTypeEl.addEventListener('input', event => {
+            row.type = event.target.value;
+        });
+    }
+
+    addRowBtn(tableDataEl) {
+        const addRowBtn = document.createElement('button');
+        addRowBtn.className = 'btn-default table-data-add-row-btn';
+        addRowBtn.innerHTML = 'Add row';
+
+        addRowBtn.addEventListener('click', event => {
+            const row = {
+                type: 'String',
+                name: `fieldName-${Math.round(Math.random() * 1000)}`
+            };
+
+            this.addRow(tableDataEl, row);
+            this.entityData.rows.push(row);
+        });
+
+        return addRowBtn;
     }
 }

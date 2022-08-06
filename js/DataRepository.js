@@ -9,7 +9,7 @@ export class DataRepository {
                     x: '30%',
                     y: '50'
                 },
-                content: 'Example'
+                description: 'Example'
             },
             entityData: [],
             refs: []

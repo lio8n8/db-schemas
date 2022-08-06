@@ -186,6 +186,7 @@ function makeDraggable(evt) {
 
             schema.findByByTableId(selectedElId).move(xDiff, yDiff);
             schema.updateTableCoordinates(selectedElId, xDiff, yDiff);
+            schema.updateTableCoordinatesInEditor(selectedElId, xDiff, yDiff)
             // schemaEditorEl.value = JSON.stringify(schema.getData(), null, 2);
 
             schema.buildRefs();
@@ -300,7 +301,7 @@ for(let i = 0; i < tableDataElems.length; i++) {
     el.addEventListener('click', event => {
         let isOpen = !!el.getAttribute('isOpen'); 
         el.setAttribute('isOpen', `${!isOpen}`);
-        console.log(!!event.target.getAttribute('isOpen'));
-        console.log(el.children[1].children[0].value);
+        //console.log(!!event.target.getAttribute('isOpen'));
+        //console.log(el.children[1].children[0].value);
     });
 }

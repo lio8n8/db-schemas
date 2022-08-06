@@ -50,6 +50,9 @@ svg .table {
 
 .btn-default {
     /*background-color: #EB5E28; #A5BE00 #26408B; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #05668D;
     width: 5.8rem;
     height: 2.8rem;
@@ -337,6 +340,7 @@ g.move, .dbschematitle, g:hover {
 }
 
 .table-data {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -345,6 +349,7 @@ g.move, .dbschematitle, g:hover {
     max-width: 18rem;
     padding: 0.5rem;
     margin: 0.5rem 0;
+    padding-bottom: 2.4rem;
     border-radius: 4px;
 }
 
@@ -390,4 +395,15 @@ g.move, .dbschematitle, g:hover {
     width: 12px;
     height: 12px;
     margin: 4px;
+}
+
+.table-data-add-row-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    flex-grow: 1;
+    width: 5rem;
+    height: 1.4rem;
+    margin: 0.4rem 1rem;
+    background-color: #2d3e11;
 }
