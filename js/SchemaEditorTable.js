@@ -21,13 +21,6 @@ export class SchemaEditorTable {
         tableDataRowBtnsEl.appendChild(this.deleteTableBtn(tableDataEl));
         tableDataEl.appendChild(tableDataRowBtnsEl);
 
-
-        /*const deleteTableIconEl = document.createElement('img');
-        deleteTableIconEl.className = 'delete-table-data-icon';
-        deleteTableIconEl.src = 'src/images/delete.svg';*/
-
-        // tableDataEl.appendChild(deleteTableIconEl);
-
         const tableDataTitle = document.createElement('div');
         tableDataTitle.className = 'table-data-row table-data-title';
         tableDataTitle.textContent = this.entityData.name;
@@ -87,11 +80,11 @@ export class SchemaEditorTable {
     }
 
     addRowBtn(tableDataEl) {
-        const addRowBtn = document.createElement('button');
-        addRowBtn.className = 'btn-default table-data-ctrl-btn table-data-add-row-btn';
-        addRowBtn.innerHTML = 'Add row';
+        const addRowIconEl = document.createElement('img');
+        addRowIconEl.className = 'add-row-table-data-icon';
+        addRowIconEl.src = 'src/images/plus.svg';
 
-        addRowBtn.addEventListener('click', event => {
+        addRowIconEl.addEventListener('click', event => {
             const row = {
                 type: 'String',
                 name: `fieldName-${Math.round(Math.random() * 1000)}`
@@ -101,18 +94,18 @@ export class SchemaEditorTable {
             this.entityData.rows.push(row);
         });
 
-        return addRowBtn;
+        return addRowIconEl;
     }
 
     deleteTableBtn(tableDataEl) {
-        const addRowBtn = document.createElement('button');
-        addRowBtn.className = 'btn-default table-data-ctrl-btn table-data-delete-table-btn';
-        addRowBtn.innerHTML = 'Delete table';
+        const deleteTableIconEl = document.createElement('img');
+        deleteTableIconEl.className = 'delete-table-data-icon';
+        deleteTableIconEl.src = 'src/images/delete.svg';
 
-        addRowBtn.addEventListener('click', event => {
+        deleteTableIconEl.addEventListener('click', event => {
             console.log('Not implemented yet!');
         });
 
-        return addRowBtn;
+        return deleteTableIconEl;
     }
 }

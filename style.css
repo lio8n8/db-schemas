@@ -355,14 +355,14 @@ g:hover {
     margin: 0.5rem 0;
     border-radius: 4px;
     border: 1px solid #54810a;
-    padding: 2rem 0.5rem;
+    padding: 1rem 0.5rem;
 }
 
 .table-data input {
     border: none;
     background-color: #252422;
     color: #FFF;
-    border-bottom: 2px solid #54810a;
+    border-bottom: 1px solid #54810a;
     font-size: 1rem;
     max-width: 8rem;
     margin: 0 4px;
@@ -381,33 +381,41 @@ g:hover {
 }
 
 .table-data input:hover {
-    border-bottom: 2px solid #54810a;
+    border-bottom: 1px solid #54810a;
     outline: none;
 }
 
 .table-data input:focus {
-    border-bottom: 2px solid #54810a;
+    border-bottom: 1px solid #54810a;
     outline: none;
 }
 
 .table-data input:active {
-    border-bottom: 2px solid #54810a;
+    border-bottom: 1px solid #54810a;
     outline: none;
 }
 
-.delete-table-data-icon {
+.add-row-table-data-icon, .delete-table-data-icon {
     display: flex;
-    align-self: end;
-    width: 12px;
-    height: 12px;
-    margin: 4px;
+    align-self: center;
+    margin: 0 .2rem;
+}
+
+.add-row-table-data-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.delete-table-data-icon {
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
 .table-data-ctrl-btns {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    margin-top: -2rem;
+    justify-content: end;
+    margin: -0.4rem 0rem 0.4rem 0rem;
 }
 
 .table-data-ctrl-btn {
