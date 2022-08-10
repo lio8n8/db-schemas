@@ -68,23 +68,26 @@ export class SchemaEditorTable {
 
         tableDataRowEl.appendChild(tableDataNameEl);
         tableDataRowEl.appendChild(tableDataTypeEl);
+        tableDataRowEl.appendChild(this.deleteRowBtn(tableDataRowEl));
 
         tableDataEl.appendChild(tableDataRowEl);
 
         tableDataNameEl.addEventListener('input', event => {
+            // TODO: Validate
             row.name = event.target.value;
         });
         tableDataTypeEl.addEventListener('input', event => {
+            // TODO: Validate
             row.type = event.target.value;
         });
     }
 
     addRowBtn(tableDataEl) {
-        const addRowIconEl = document.createElement('img');
-        addRowIconEl.className = 'add-row-table-data-icon';
-        addRowIconEl.src = 'src/images/plus.svg';
+        const htmlItem = document.createElement('img');
+        htmlItem.className = 'add-row-table-data-icon';
+        htmlItem.src = 'src/images/plus.svg';
 
-        addRowIconEl.addEventListener('click', event => {
+        htmlItem.addEventListener('click', event => {
             const row = {
                 type: 'String',
                 name: `fieldName-${Math.round(Math.random() * 1000)}`
@@ -94,18 +97,31 @@ export class SchemaEditorTable {
             this.entityData.rows.push(row);
         });
 
-        return addRowIconEl;
+        return htmlItem;
     }
 
     deleteTableBtn(tableDataEl) {
-        const deleteTableIconEl = document.createElement('img');
-        deleteTableIconEl.className = 'delete-table-data-icon';
-        deleteTableIconEl.src = 'src/images/delete.svg';
+        const htmlItem = document.createElement('img');
+        htmlItem.className = 'delete-table-data-icon';
+        htmlItem.src = 'src/images/delete.svg';
 
-        deleteTableIconEl.addEventListener('click', event => {
+        htmlItem.addEventListener('click', event => {
+            console.log('Not implemented yet!');
+            // tableDataEl.remove();
+        });
+
+        return htmlItem;
+    }
+
+    deleteRowBtn(rowEl) {
+        const htmlItem = document.createElement('img');
+        htmlItem.className = 'delete-table-row-icon';
+        htmlItem.src = 'src/images/delete.svg';
+
+        htmlItem.addEventListener('click', event => {
             console.log('Not implemented yet!');
         });
 
-        return deleteTableIconEl;
+        return htmlItem;
     }
 }

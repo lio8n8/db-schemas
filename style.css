@@ -351,7 +351,7 @@ g:hover {
     height: fit-content;
     background-color: #252422;
     color: #FFF;
-    max-width: 18rem;
+    max-width: 20rem;
     margin: 0.8rem 0;
     border-radius: 4px;
     border: 1px solid #54810a;
@@ -379,6 +379,7 @@ g:hover {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    align-items: center;
     box-sizing: border-box;
 }
 
@@ -419,6 +420,12 @@ g:hover {
     height: 1.3rem;
 }
 
+.delete-table-row-icon {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-left: -0.8rem;
+}
+
 .table-data-ctrl-btns {
     display: flex;
     flex-direction: row;
@@ -426,7 +433,7 @@ g:hover {
     margin: -0.4rem 0rem 0.4rem 0rem;
 }
 
-.table-data-ctrl-btn {
+/*.table-data-ctrl-btn {
     width: 5rem;
     height: 1.4rem;
     margin: 0.4rem 1rem;
@@ -440,4 +447,4 @@ g:hover {
 .table-data-delete-table-btn {
     background-color: #89062a;
     width: 7rem;
-}
+}*/
