@@ -283,7 +283,7 @@ function readThemeEditorInput() {
 }
 
 function renderTable(themeConfig) {
-    const tableData = JSON.parse(JSON.stringify(schema.getData().entityData[0]));
+    const tableData = JSON.parse(JSON.stringify(schema.dataRepository.getData().entityData[0]));
 
         tableData.position.x = 20;
         tableData.position.y = 20;
